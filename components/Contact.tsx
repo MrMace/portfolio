@@ -33,10 +33,10 @@ const socialLinks = [
   {
     icon: Mail,
     label: "Email",
-    handle: "matt@mattmace.dev",
-    href: "mailto:matt@mattmace.dev",
+    handle: "Get in touch",
+    href: "https://www.linkedin.com/in/macematt/",
     color: "#7c3aed",
-    desc: "Open to projects and opportunities",
+    desc: "Reach out via LinkedIn",
   },
 ];
 
