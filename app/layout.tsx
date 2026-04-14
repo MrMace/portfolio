@@ -13,13 +13,23 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Matt Mace — Software Engineer × AI",
-  description: "Software engineer based in Indianapolis embracing AI to build the future. Full-stack developer with a passion for intelligent systems.",
-  keywords: ["software engineer", "AI", "full stack", "Indianapolis", "developer", "Matt Mace"],
+  title: "Matt Mace — Platform Engineer & AI Graduate Student",
+  description: "CMS Platform Engineer based in Indianapolis with 8+ years on a SaaS platform serving millions of users. Pursuing an M.S. in AI. Builder of a 21 CFR Part 11-compliant LIMS.",
+  keywords: ["Matt Mace", "platform engineer", "CMS engineer", "data integrity", "LIMS", "AI", "Indianapolis", "software engineer", "SaaS"],
+  metadataBase: new URL("https://mattmace.dev"),
   openGraph: {
-    title: "Matt Mace — Software Engineer × AI",
-    description: "Software engineer embracing AI to build the future.",
+    title: "Matt Mace — Platform Engineer & AI Graduate Student",
+    description: "8+ years on a SaaS platform serving millions of users. M.S. in AI in progress. Builder of a 21 CFR Part 11-compliant LIMS.",
     type: "website",
+    url: "https://mattmace.dev",
+  },
+  twitter: {
+    card: "summary",
+    title: "Matt Mace — Platform Engineer & AI Graduate Student",
+    description: "8+ years on a SaaS platform serving millions of users. M.S. in AI in progress.",
+  },
+  alternates: {
+    canonical: "https://mattmace.dev",
   },
 };
 

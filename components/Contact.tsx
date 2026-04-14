@@ -30,6 +30,14 @@ const socialLinks = [
     color: "#10b981",
     desc: "Front-end experiments & UI demos",
   },
+  {
+    icon: Mail,
+    label: "Email",
+    handle: "matt@mattmace.dev",
+    href: "mailto:matt@mattmace.dev",
+    color: "#7c3aed",
+    desc: "Open to projects and opportunities",
+  },
 ];
 
 export default function Contact() {
@@ -95,7 +103,7 @@ export default function Contact() {
         </motion.p>
 
         {/* Social links */}
-        <div className="grid sm:grid-cols-3 gap-4 mb-12">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-12">
           {socialLinks.map((link, i) => {
             const Icon = link.icon;
             return (

@@ -142,16 +142,25 @@ export default function NeuralCanvas() {
   if (!mounted) return null;
 
   return (
-    <div className="absolute inset-0" style={{ zIndex: 0 }}>
+    <div className="absolute inset-0" style={{ zIndex: 0, background: "#030712" }}>
       <Canvas
         camera={{ position: [0, 0, 20], fov: 60, near: 0.1, far: 100 }}
         dpr={[1, 1.5]}
+        frameloop="always"
         gl={{
           antialias: false,
-          alpha: true,
-          powerPreference: "high-performance",
+          alpha: false,
+          powerPreference: "default",
         }}
-        style={{ background: "transparent" }}
+        onCreated={({ gl }) => {
+          gl.setClearColor("#030712", 1);
+          gl.domElement.addEventListener(
+            "webglcontextlost",
+            (e) => { e.preventDefault(); },
+            false
+          );
+        }}
+        style={{ background: "#030712" }}
       >
         <ambientLight intensity={0.5} />
         <NeuralNetwork />
