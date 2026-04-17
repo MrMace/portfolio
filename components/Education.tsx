@@ -24,7 +24,7 @@ const degrees = [
     note: "Perfect 4.0 GPA across graduate-level software engineering coursework.",
   },
   {
-    degree: "Bachelor of Science — Informatics",
+    degree: "Bachelor of Science — School of Informatics",
     school: "IUPUI",
     period: "Jan 2015 – May 2018",
     status: "GPA 3.97",

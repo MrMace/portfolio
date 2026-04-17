@@ -207,8 +207,8 @@ export default function Resume() {
               note="GPA: 4.0"
             />
             <Degree
-              degree="Bachelor of Science — Informatics"
-              school="Indiana University–Purdue University Indianapolis (IUPUI)"
+              degree="Bachelor of Science — School of Informatics"
+              school="IUPUI"
               period="Jan 2015 – May 2018"
               note="GPA: 3.97 · Highest Distinction (Top 10%)"
             />
