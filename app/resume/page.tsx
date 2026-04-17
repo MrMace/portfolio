@@ -1,7 +1,6 @@
 "use client";
 
-import { useRef } from "react";
-import { Download, ExternalLink, MapPin, Globe } from "lucide-react";
+import { Download, MapPin, Globe } from "lucide-react";
 import { FaLinkedinIn, FaGithub } from "react-icons/fa";
 
 export default function Resume() {
@@ -9,7 +8,7 @@ export default function Resume() {
 
   return (
     <>
-      {/* Action bar — hidden when printing */}
+      {/* Action bar - hidden when printing */}
       <div
         className="no-print fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 py-3"
         style={{
@@ -25,45 +24,22 @@ export default function Resume() {
           onMouseEnter={(e) => (e.currentTarget.style.color = "#06b6d4")}
           onMouseLeave={(e) => (e.currentTarget.style.color = "#475569")}
         >
-          ← mattmace.dev
+          &larr; mattmace.dev
         </a>
-        <div className="flex gap-3">
-          <a
-            href="/resume"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center gap-2 px-4 py-2 rounded-lg text-sm transition-all duration-200"
-            style={{
-              border: "1px solid rgba(6, 182, 212, 0.3)",
-              color: "#06b6d4",
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.background = "rgba(6, 182, 212, 0.08)";
-              e.currentTarget.style.borderColor = "rgba(6, 182, 212, 0.6)";
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.background = "transparent";
-              e.currentTarget.style.borderColor = "rgba(6, 182, 212, 0.3)";
-            }}
-          >
-            <ExternalLink size={14} />
-            Open in new tab
-          </a>
-          <button
-            onClick={handlePrint}
-            className="flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-semibold transition-all duration-200"
-            style={{
-              background: "linear-gradient(135deg, #06b6d4, #7c3aed)",
-              color: "#fff",
-              boxShadow: "0 0 16px rgba(6, 182, 212, 0.3)",
-              border: "none",
-              cursor: "pointer",
-            }}
-          >
-            <Download size={14} />
-            Download PDF
-          </button>
-        </div>
+        <button
+          onClick={handlePrint}
+          className="flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-semibold transition-all duration-200"
+          style={{
+            background: "linear-gradient(135deg, #06b6d4, #7c3aed)",
+            color: "#fff",
+            boxShadow: "0 0 16px rgba(6, 182, 212, 0.3)",
+            border: "none",
+            cursor: "pointer",
+          }}
+        >
+          <Download size={14} />
+          Download PDF
+        </button>
       </div>
 
       {/* Resume document */}
@@ -124,9 +100,9 @@ export default function Resume() {
               company="MyNetWire"
               period="Apr 2018 – Present"
               bullets={[
-                "Act as Subject Matter Expert (SME) for complex, high-impact platform issues — partnering across development, support, and operations to drive resolution and maintain system integrity.",
+                "Act as Subject Matter Expert (SME) for complex, high-impact platform issues, partnering across development, support, and operations to drive resolution and maintain system integrity.",
                 "Maintain and continuously improve enterprise-scale SaaS systems serving millions of users, with emphasis on data integrity, reliability, and performance.",
-                "Develop and enhance features within a custom CMS — UI improvements, performance optimizations, and functionality upgrades across thousands of active websites.",
+                "Develop and enhance features within a custom CMS, including UI improvements, performance optimizations, and functionality upgrades across thousands of active websites.",
                 "Participate in systematic platform validation, testing, and release procedures to ensure functionality, quality, and consistency prior to deployment.",
                 "Develop and maintain internal documentation, training materials, and best practices to standardize workflows and improve team effectiveness.",
                 "Drive continuous improvement initiatives across platform systems, processes, and quality standards.",
@@ -197,24 +173,24 @@ export default function Resume() {
           {/* Education */}
           <Section title="Education">
             <Degree
-              degree="Master of Science — Artificial Intelligence"
+              degree="Master of Science in Artificial Intelligence"
               school="Udacity Institute of AI & Technology"
               period="Dec 2025 – Dec 2027 (Expected)"
             />
             <Degree
-              degree="Master of Science — Software Development"
+              degree="Master of Science in Software Development"
               school="Maryville University of Saint Louis"
               period="Sep 2018 – May 2020"
               note="GPA: 4.0"
             />
             <Degree
-              degree="Bachelor of Science — School of Informatics"
+              degree="Bachelor of Science, School of Informatics"
               school="Indiana University–Purdue University Indianapolis (IUPUI)"
               period="Jan 2015 – May 2018"
               note="GPA: 3.97 · Highest Distinction (Top 10%)"
             />
             <Degree
-              degree="Associate of Science — Computer Programming"
+              degree="Associate of Science in Computer Programming"
               school="Vincennes University"
               period="2013 – 2015"
             />
@@ -224,13 +200,13 @@ export default function Resume() {
           <div className="grid grid-cols-2 gap-8">
             <Section title="Certifications">
               <ul className="text-sm space-y-1" style={{ color: "#374151" }}>
-                <li>AI Essentials — Google <span style={{ color: "#6b7280" }}>(Nov 2025)</span></li>
-                <li>CompTIA Project+ — CompTIA <span style={{ color: "#6b7280" }}>(Jan 2017)</span></li>
+                <li>AI Essentials, Google <span style={{ color: "#6b7280" }}>(Nov 2025)</span></li>
+                <li>CompTIA Project+ <span style={{ color: "#6b7280" }}>(Jan 2017)</span></li>
               </ul>
             </Section>
             <Section title="Honors & Awards">
               <ul className="text-sm space-y-1" style={{ color: "#374151" }}>
-                <li>Highest Distinction — IUPUI <span style={{ color: "#6b7280" }}>(Top 10%, GPA 3.9–4.0)</span></li>
+                <li>Highest Distinction, IUPUI <span style={{ color: "#6b7280" }}>(Top 10%, GPA 3.9–4.0)</span></li>
                 <li>Golden Key International Honour Society <span style={{ color: "#6b7280" }}>(Top 15%)</span></li>
               </ul>
             </Section>
