@@ -92,6 +92,29 @@ export default function Nav() {
 
           {/* Social icons + mobile toggle */}
           <div className="flex items-center gap-4">
+              <a
+              href="/resume"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hidden md:flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-mono tracking-wide transition-all duration-200"
+              style={{
+                border: "1px solid rgba(6, 182, 212, 0.3)",
+                color: "#06b6d4",
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.background = "rgba(6, 182, 212, 0.08)";
+                e.currentTarget.style.borderColor = "rgba(6, 182, 212, 0.7)";
+                e.currentTarget.style.boxShadow = "0 0 12px rgba(6, 182, 212, 0.2)";
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.background = "transparent";
+                e.currentTarget.style.borderColor = "rgba(6, 182, 212, 0.3)";
+                e.currentTarget.style.boxShadow = "none";
+              }}
+            >
+              Résumé
+            </a>
+
             {[
               { href: "https://github.com/MrMace", icon: FaGithub },
               { href: "https://www.linkedin.com/in/macematt/", icon: FaLinkedinIn },

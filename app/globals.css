@@ -189,3 +189,20 @@ body::before {
   background-image: radial-gradient(circle, rgba(6, 182, 212, 0.06) 1px, transparent 1px);
   background-size: 24px 24px;
 }
+
+/* Print styles for resume page */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  .resume-page {
+    padding-top: 0 !important;
+  }
+  body {
+    background: #fff !important;
+  }
+  @page {
+    margin: 0.6in;
+    size: letter;
+  }
+}
