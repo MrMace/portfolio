@@ -25,7 +25,7 @@ const degrees = [
   },
   {
     degree: "Bachelor of Science — School of Informatics",
-    school: "IUPUI",
+    school: "Indiana University–Purdue University Indianapolis (IUPUI)",
     period: "Jan 2015 – May 2018",
     status: "GPA 3.97",
     statusColor: "#7c3aed",
