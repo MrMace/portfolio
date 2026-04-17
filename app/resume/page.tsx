@@ -106,12 +106,14 @@ export default function Resume() {
           {/* Summary */}
           <Section title="Summary">
             <p className="text-sm leading-relaxed" style={{ color: "#374151" }}>
-              CMS Platform Engineer with 8+ years of experience on a large-scale SaaS platform serving millions of users
-              across thousands of websites. Specializes in PHP, JavaScript, HTML/CSS, SQL, and CMS architecture.
-              Serves as the engineering escalation point for complex, high-impact platform issues — driving data integrity,
-              system reliability, continuous improvement, and cross-functional collaboration. Holds an M.S. in Software
-              Development (4.0 GPA) and a B.S. in School of Informatics (3.97 GPA, Highest Distinction). Currently
-              pursuing an M.S. in Artificial Intelligence.
+              Experienced CMS Platform Engineer with 8+ years contributing to a large-scale SaaS platform that powers
+              thousands of websites and serves millions of users. Brings deep expertise in PHP, JavaScript, HTML/CSS,
+              SQL, and CMS architecture, with a consistent focus on data integrity, system reliability, and platform
+              performance. Regularly serves as the engineering escalation point for complex, high-impact technical issues,
+              partnering across development, support, and operations to drive resolution and continuous improvement.
+              Skilled in platform validation, documentation, and cross-functional collaboration. Holds an M.S. in Software
+              Development with a 4.0 GPA and a B.S. from the School of Informatics with a 3.97 GPA, graduating with
+              Highest Distinction. Currently pursuing a second Master of Science in Artificial Intelligence.
             </p>
           </Section>
 
