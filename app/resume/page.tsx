@@ -109,10 +109,9 @@ export default function Resume() {
               CMS Platform Engineer with 8+ years of experience on a large-scale SaaS platform serving millions of users
               across thousands of websites. Specializes in PHP, JavaScript, HTML/CSS, SQL, and CMS architecture.
               Serves as the engineering escalation point for complex, high-impact platform issues — driving data integrity,
-              system reliability, continuous improvement, and cross-functional collaboration. Independently built a
-              21 CFR Part 11-compliant Laboratory Information Management System (LIMS) with electronic signatures,
-              immutable audit trails, and OOS workflow management. Holds an M.S. in Software Development (4.0 GPA)
-              and a B.S. in Informatics (3.97 GPA, Highest Distinction). Currently pursuing an M.S. in Artificial Intelligence.
+              system reliability, continuous improvement, and cross-functional collaboration. Holds an M.S. in Software
+              Development (4.0 GPA) and a B.S. in School of Informatics (3.97 GPA, Highest Distinction). Currently
+              pursuing an M.S. in Artificial Intelligence.
             </p>
           </Section>
 
