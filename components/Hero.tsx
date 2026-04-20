@@ -184,7 +184,9 @@ export default function Hero() {
             View My Work
           </a>
           <a
-            href="#contact"
+            href="https://www.linkedin.com/in/macematt/"
+            target="_blank"
+            rel="noopener noreferrer"
             className="px-8 py-3.5 rounded-lg font-semibold text-sm tracking-wide transition-all duration-300"
             style={{
               background: "transparent",
