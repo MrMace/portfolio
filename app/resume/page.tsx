@@ -8,7 +8,7 @@ export default function Resume() {
     <>
       {/* Action bar - hidden when printing */}
       <div
-        className="no-print fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 py-3"
+        className="no-print sticky top-0 z-50 flex items-center justify-between px-6 py-3"
         style={{
           background: "rgba(3, 7, 18, 0.95)",
           borderBottom: "1px solid rgba(6, 182, 212, 0.15)",
@@ -42,7 +42,7 @@ export default function Resume() {
 
       {/* Resume document */}
       <div
-        className="resume-page min-h-screen pt-16"
+        className="resume-page min-h-screen"
         style={{ background: "#fff" }}
       >
         <div
