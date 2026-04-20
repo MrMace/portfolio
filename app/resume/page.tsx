@@ -48,18 +48,18 @@ export default function Resume() {
         style={{ background: "#fff" }}
       >
         <div
-          className="max-w-[820px] mx-auto px-10 py-10"
+          className="max-w-[820px] mx-auto px-10 py-6"
           style={{ color: "#111827" }}
         >
           {/* Header */}
-          <div className="border-b-2 pb-5 mb-6" style={{ borderColor: "#0891b2" }}>
-            <h1 className="text-4xl font-bold tracking-tight" style={{ color: "#0f172a" }}>
+          <div className="border-b-2 pb-3 mb-4" style={{ borderColor: "#0891b2" }}>
+            <h1 className="text-3xl font-bold tracking-tight" style={{ color: "#0f172a" }}>
               Matthew Mace
             </h1>
-            <p className="text-lg mt-1 font-medium" style={{ color: "#0891b2" }}>
+            <p className="text-base mt-0.5 font-medium" style={{ color: "#0891b2" }}>
               CMS Platform Engineer · Data Integrity · AI Graduate Student
             </p>
-            <div className="flex flex-wrap gap-4 mt-3 text-sm" style={{ color: "#475569" }}>
+            <div className="flex flex-wrap gap-4 mt-2 text-sm" style={{ color: "#475569" }}>
               <span className="flex items-center gap-1">
                 <MapPin size={13} />
                 Indianapolis, Indiana
@@ -82,14 +82,12 @@ export default function Resume() {
           {/* Summary */}
           <Section title="Summary">
             <p className="text-sm leading-relaxed" style={{ color: "#374151" }}>
-              Experienced CMS Platform Engineer with 8+ years contributing to a large-scale SaaS platform that powers
-              thousands of websites and serves millions of users. Brings deep expertise in PHP, JavaScript, HTML/CSS,
-              SQL, and CMS architecture, with a consistent focus on data integrity, system reliability, and platform
-              performance. Regularly serves as the engineering escalation point for complex, high-impact technical issues,
-              partnering across development, support, and operations to drive resolution and continuous improvement.
-              Skilled in platform validation, documentation, and cross-functional collaboration. Holds an M.S. in Software
-              Development with a 4.0 GPA and a B.S. from the School of Informatics with a 3.97 GPA, graduating with
-              Highest Distinction. Currently pursuing a second Master of Science in Artificial Intelligence.
+              CMS Platform Engineer with 8+ years on a large-scale SaaS platform serving millions of users.
+              Deep expertise in PHP, JavaScript, HTML/CSS, SQL, and CMS architecture, with a consistent focus on
+              data integrity, system reliability, and platform performance. Serves as the engineering escalation
+              point for complex technical issues across development, support, and operations. M.S. Software Development
+              (4.0 GPA), B.S. Informatics (3.97 GPA, Highest Distinction), and currently pursuing a second M.S. in
+              Artificial Intelligence.
             </p>
           </Section>
 
@@ -105,7 +103,6 @@ export default function Resume() {
                 "Develop and enhance features within a custom CMS, including UI improvements, performance optimizations, and functionality upgrades across thousands of active websites.",
                 "Participate in systematic platform validation, testing, and release procedures to ensure functionality, quality, and consistency prior to deployment.",
                 "Develop and maintain internal documentation, training materials, and best practices to standardize workflows and improve team effectiveness.",
-                "Drive continuous improvement initiatives across platform systems, processes, and quality standards.",
                 "Utilize PHP, JavaScript, HTML, CSS, and PhpStorm to deliver clean, efficient, and maintainable code.",
               ]}
             />
@@ -116,9 +113,7 @@ export default function Resume() {
               bullets={[
                 "Design and develop websites, web applications, and custom CMS solutions for clients.",
                 "Manage full project lifecycle: requirements, scope, timelines, budgets, and delivery.",
-                "Gather and analyze client requirements, translating business needs into accurate, data-driven technical solutions.",
-                "Build responsive, maintainable front-end and back-end code across a range of tech stacks.",
-                "Perform testing, debugging, and optimization to ensure quality, performance, and stability.",
+                "Build responsive, maintainable front-end and back-end code; perform testing, debugging, and optimization.",
               ]}
             />
             <Job
@@ -127,11 +122,7 @@ export default function Resume() {
               period="May 2016 – Aug 2016"
               bullets={[
                 "Assisted with criminal investigations by gathering and analyzing evidence, conducting interviews, and preparing detailed reports.",
-                "Observed and participated in patrol activities, including responding to calls for service and traffic stops.",
-                "Attended and contributed to training sessions such as defensive driving and firearms training.",
                 "Supported administrative tasks including data entry, record-keeping, and document organization.",
-                "Gained knowledge of laws, regulations, and law enforcement procedures.",
-                "Participated in community outreach and public safety initiatives to foster positive public relations.",
               ]}
             />
             <Job
@@ -139,23 +130,19 @@ export default function Resume() {
               company="DISH Network"
               period="Oct 2014 – May 2016"
               bullets={[
-                "Installed satellite dishes, antennas, receivers, and other communication equipment at homes, commercial buildings, and mobile units.",
-                "Aligned and calibrated satellite dishes and antennas to optimize signal strength and clarity.",
-                "Ran cables and connected equipment to ensure proper communication between components and external networks.",
-                "Conducted tests and quality checks to verify system functionality and performance according to standards.",
-                "Diagnosed and resolved technical issues including signal interference, equipment malfunctions, and connectivity problems.",
-                "Provided guidance and support to customers on system use, maintenance, and troubleshooting.",
+                "Installed, aligned, and calibrated satellite dishes, antennas, and receivers at residential and commercial locations.",
+                "Diagnosed and resolved technical issues including signal interference and equipment malfunctions; provided customer guidance on system use and troubleshooting.",
               ]}
             />
           </Section>
 
           {/* Projects */}
           <Section title="Notable Projects">
-            <div className="space-y-3">
+            <div className="space-y-2">
               <Project
                 title="Simple LIMS"
                 tech="Python · FastAPI · PostgreSQL · React · TypeScript · Docker · scikit-learn"
-                desc="Full-stack Laboratory Information Management System built to pharmaceutical compliance standards. Features 21 CFR Part 11 electronic signatures, immutable audit trail logging, out-of-specification (OOS) workflow management with manager approval gates, chain-of-custody tracking, and statistical anomaly detection via Z-score analysis. Role-based access across administrator, quality manager, and technician tiers."
+                desc="Full-stack Laboratory Information Management System built to pharmaceutical compliance standards. Features 21 CFR Part 11 electronic signatures, immutable audit trail logging, OOS workflow management with manager approval gates, and Z-score anomaly detection. Role-based access across administrator, quality manager, and technician tiers."
                 url="github.com/MrMace/Simple_LIMS"
               />
               <Project
@@ -175,7 +162,7 @@ export default function Resume() {
 
           {/* Skills */}
           <Section title="Skills">
-            <div className="grid grid-cols-2 gap-x-8 gap-y-1 text-sm" style={{ color: "#374151" }}>
+            <div className="grid grid-cols-2 gap-x-8 gap-y-0.5 text-sm" style={{ color: "#374151" }}>
               <SkillRow label="Languages" value="PHP, JavaScript, Python, HTML/CSS, SQL" />
               <SkillRow label="Platform" value="CMS Architecture, SaaS Systems, REST APIs" />
               <SkillRow label="Database" value="MariaDB, MySQL, PostgreSQL" />
@@ -214,7 +201,7 @@ export default function Resume() {
           </Section>
 
           {/* Certifications & Honors */}
-          <div className="grid grid-cols-2 gap-8">
+          <div className="grid grid-cols-2 gap-4">
             <Section title="Certifications">
               <ul className="text-sm space-y-1" style={{ color: "#374151" }}>
                 <li>AI Essentials, Google <span style={{ color: "#6b7280" }}>(Nov 2025)</span></li>
@@ -236,9 +223,9 @@ export default function Resume() {
 
 function Section({ title, children }: { title: string; children: React.ReactNode }) {
   return (
-    <div className="mb-6">
+    <div className="mb-4">
       <h2
-        className="text-xs font-bold tracking-widest uppercase mb-3 pb-1"
+        className="text-xs font-bold tracking-widest uppercase mb-2 pb-1"
         style={{
           color: "#0891b2",
           borderBottom: "1px solid #e2e8f0",
@@ -258,7 +245,7 @@ function Job({ title, company, period, bullets }: {
   bullets: string[];
 }) {
   return (
-    <div className="mb-5">
+    <div className="mb-3">
       <div className="flex items-start justify-between flex-wrap gap-1 mb-1">
         <div>
           <span className="font-semibold text-sm" style={{ color: "#0f172a" }}>{title}</span>
@@ -266,7 +253,7 @@ function Job({ title, company, period, bullets }: {
         </div>
         <span className="text-xs font-mono" style={{ color: "#6b7280" }}>{period}</span>
       </div>
-      <ul className="space-y-1">
+      <ul className="space-y-0.5">
         {bullets.map((b, i) => (
           <li key={i} className="flex items-start gap-2 text-sm" style={{ color: "#374151" }}>
             <span className="mt-1.5 w-1 h-1 rounded-full flex-shrink-0" style={{ background: "#0891b2" }} />
@@ -303,7 +290,7 @@ function Degree({ degree, school, period, note }: {
   note?: string;
 }) {
   return (
-    <div className="mb-3 text-sm">
+    <div className="mb-2 text-sm">
       <div className="flex items-start justify-between flex-wrap gap-1">
         <div>
           <span className="font-semibold" style={{ color: "#0f172a" }}>{degree}</span>
