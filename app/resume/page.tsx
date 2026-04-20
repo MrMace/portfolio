@@ -4,8 +4,6 @@ import { Download, MapPin, Globe } from "lucide-react";
 import { FaLinkedinIn, FaGithub } from "react-icons/fa";
 
 export default function Resume() {
-  const handlePrint = () => window.print();
-
   return (
     <>
       {/* Action bar - hidden when printing */}
@@ -26,20 +24,20 @@ export default function Resume() {
         >
           &larr; mattmace.dev
         </a>
-        <button
-          onClick={handlePrint}
+        <a
+          href="/matthew-mace-resume.pdf"
+          download
           className="flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-semibold transition-all duration-200"
           style={{
             background: "linear-gradient(135deg, #06b6d4, #7c3aed)",
             color: "#fff",
             boxShadow: "0 0 16px rgba(6, 182, 212, 0.3)",
-            border: "none",
-            cursor: "pointer",
+            textDecoration: "none",
           }}
         >
           <Download size={14} />
           Download PDF
-        </button>
+        </a>
       </div>
 
       {/* Resume document */}
