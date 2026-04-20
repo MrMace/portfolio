@@ -128,7 +128,10 @@ export default function Resume() {
               bullets={[
                 "Assisted with criminal investigations by gathering and analyzing evidence, conducting interviews, and preparing detailed reports.",
                 "Observed and participated in patrol activities, including responding to calls for service and traffic stops.",
+                "Attended and contributed to training sessions such as defensive driving and firearms training.",
                 "Supported administrative tasks including data entry, record-keeping, and document organization.",
+                "Gained knowledge of laws, regulations, and law enforcement procedures.",
+                "Participated in community outreach and public safety initiatives to foster positive public relations.",
               ]}
             />
             <Job
@@ -136,9 +139,12 @@ export default function Resume() {
               company="DISH Network"
               period="Oct 2014 – May 2016"
               bullets={[
-                "Installed and calibrated satellite dishes, antennas, receivers, and other communication equipment.",
-                "Diagnosed and resolved technical issues including signal interference and connectivity problems.",
-                "Provided guidance and support to customers on system use and maintenance.",
+                "Installed satellite dishes, antennas, receivers, and other communication equipment at homes, commercial buildings, and mobile units.",
+                "Aligned and calibrated satellite dishes and antennas to optimize signal strength and clarity.",
+                "Ran cables and connected equipment to ensure proper communication between components and external networks.",
+                "Conducted tests and quality checks to verify system functionality and performance according to standards.",
+                "Diagnosed and resolved technical issues including signal interference, equipment malfunctions, and connectivity problems.",
+                "Provided guidance and support to customers on system use, maintenance, and troubleshooting.",
               ]}
             />
           </Section>
