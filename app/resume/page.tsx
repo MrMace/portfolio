@@ -122,12 +122,23 @@ export default function Resume() {
               ]}
             />
             <Job
+              title="Internship"
+              company="Indiana State Police"
+              period="May 2016 – Aug 2016"
+              bullets={[
+                "Assisted with criminal investigations by gathering and analyzing evidence, conducting interviews, and preparing detailed reports.",
+                "Observed and participated in patrol activities, including responding to calls for service and traffic stops.",
+                "Supported administrative tasks including data entry, record-keeping, and document organization.",
+              ]}
+            />
+            <Job
               title="Spatial Communications Technician"
               company="DISH Network"
               period="Oct 2014 – May 2016"
               bullets={[
                 "Installed and calibrated satellite dishes, antennas, receivers, and other communication equipment.",
                 "Diagnosed and resolved technical issues including signal interference and connectivity problems.",
+                "Provided guidance and support to customers on system use and maintenance.",
               ]}
             />
           </Section>

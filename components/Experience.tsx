@@ -36,6 +36,32 @@ const jobs = [
     ],
     tech: ["PHP", "JavaScript", "HTML/CSS", "MySQL", "CMS", "Client Management"],
   },
+  {
+    title: "Internship",
+    company: "Indiana State Police",
+    period: "May 2016 – Aug 2016",
+    duration: "4 mos",
+    color: "#10b981",
+    bullets: [
+      "Assisted with criminal investigations by gathering and analyzing evidence, conducting interviews, and preparing detailed reports.",
+      "Observed and participated in patrol activities, including responding to calls for service and traffic stops.",
+      "Supported administrative tasks including data entry, record-keeping, and document organization.",
+    ],
+    tech: ["Data Entry", "Record-Keeping", "Report Writing", "Investigation Support"],
+  },
+  {
+    title: "Spatial Communications Technician",
+    company: "DISH Network",
+    period: "Oct 2014 – May 2016",
+    duration: "1 yr 8 mos",
+    color: "#f59e0b",
+    bullets: [
+      "Installed and calibrated satellite dishes, antennas, receivers, and other communication equipment.",
+      "Diagnosed and resolved technical issues including signal interference and connectivity problems.",
+      "Provided guidance and support to customers on system use and maintenance.",
+    ],
+    tech: ["Satellite Systems", "Hardware Installation", "Diagnostics", "Customer Support"],
+  },
 ];
 
 export default function Experience() {
