@@ -184,12 +184,27 @@ export default function Nav() {
                   {link.label}
                 </a>
               ))}
-              <div className="flex gap-4 pt-2">
-                <a href="https://github.com/MrMace" target="_blank" rel="noopener noreferrer" style={{ color: "#94a3b8" }}>
-                  <FaGithub size={18} />
-                </a>
-                <a href="https://www.linkedin.com/in/macematt/" target="_blank" rel="noopener noreferrer" style={{ color: "#94a3b8" }}>
-                  <FaLinkedinIn size={18} />
+              <div className="flex items-center justify-between pt-2">
+                <div className="flex gap-4">
+                  <a href="https://github.com/MrMace" target="_blank" rel="noopener noreferrer" style={{ color: "#94a3b8" }}>
+                    <FaGithub size={18} />
+                  </a>
+                  <a href="https://www.linkedin.com/in/macematt/" target="_blank" rel="noopener noreferrer" style={{ color: "#94a3b8" }}>
+                    <FaLinkedinIn size={18} />
+                  </a>
+                </div>
+                <a
+                  href="/resume"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => setMobileOpen(false)}
+                  className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-mono tracking-wide"
+                  style={{
+                    border: "1px solid rgba(6, 182, 212, 0.3)",
+                    color: "#06b6d4",
+                  }}
+                >
+                  Résumé
                 </a>
               </div>
             </div>
