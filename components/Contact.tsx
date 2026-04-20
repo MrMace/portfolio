@@ -2,7 +2,7 @@
 
 import { useRef, useState } from "react";
 import { motion, useInView } from "framer-motion";
-import { Mail, ArrowRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { FaGithub, FaLinkedinIn, FaCodepen } from "react-icons/fa";
 
 const socialLinks = [
@@ -29,14 +29,6 @@ const socialLinks = [
     href: "https://codepen.io/mrmace",
     color: "#10b981",
     desc: "Front-end experiments & UI demos",
-  },
-  {
-    icon: Mail,
-    label: "Email",
-    handle: "Get in touch",
-    href: "https://www.linkedin.com/in/macematt/",
-    color: "#7c3aed",
-    desc: "Reach out via LinkedIn",
   },
 ];
 
@@ -103,7 +95,7 @@ export default function Contact() {
         </motion.p>
 
         {/* Social links */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-12">
+        <div className="grid sm:grid-cols-3 gap-4 mb-12">
           {socialLinks.map((link, i) => {
             const Icon = link.icon;
             return (
