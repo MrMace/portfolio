@@ -341,15 +341,28 @@ class DiceDash {
     this.scene.fog = new THREE.FogExp2(0x050510, 0.038);
 
     this.camera = new THREE.PerspectiveCamera(65, window.innerWidth/window.innerHeight, 0.1, 200);
-    this.camera.position.set(2.8, 3.2, 8);
-    this.camera.lookAt(0, -0.5, -8);
+    this._updateCamera();
 
     window.addEventListener('resize', () => {
-      this.camera.aspect = window.innerWidth/window.innerHeight;
-      this.camera.updateProjectionMatrix();
       this.renderer.setSize(window.innerWidth, window.innerHeight);
+      this._updateCamera();
     });
     this.clock = new THREE.Clock();
+  }
+
+  _updateCamera() {
+    const portrait = window.innerWidth < window.innerHeight;
+    if (portrait) {
+      this.camera.fov = 72;
+      this.camera.position.set(0, 2.0, 9);
+      this.camera.lookAt(0, -0.2, -6);
+    } else {
+      this.camera.fov = 65;
+      this.camera.position.set(2.8, 3.2, 8);
+      this.camera.lookAt(0, -0.5, -8);
+    }
+    this.camera.aspect = window.innerWidth / window.innerHeight;
+    this.camera.updateProjectionMatrix();
   }
 
   _initLights() {
@@ -422,7 +435,8 @@ class DiceDash {
 
   _initInput() {
     const cv = this.renderer.domElement;
-    this.touch = { startX:0, startY:0, startTime:0, active:false, isDrag:false };
+    this.touch      = { active: false };  // mouse state
+    this.touchState = null;               // finger touch state
 
     cv.addEventListener('touchstart', e => this._onTouchStart(e), {passive:false});
     cv.addEventListener('touchmove',  e => this._onTouchMove(e),  {passive:false});
@@ -451,14 +465,19 @@ class DiceDash {
     }
   }
 
-  _moveGrid(dCol, dRow) {
-    const nc = Math.max(0, Math.min(2, this.dieGridCol+dCol));
-    const nr = Math.max(0, Math.min(2, this.dieGridRow+dRow));
-    if (nc!==this.dieGridCol || nr!==this.dieGridRow) {
-      this.dieGridCol=nc; this.dieGridRow=nr;
-      this.dieTargetX=GRID_X[nc]; this.dieTargetY=GRID_Y[nr];
+  _moveToGrid(col, row) {
+    if (col !== this.dieGridCol || row !== this.dieGridRow) {
+      this.dieGridCol = col; this.dieGridRow = row;
+      this.dieTargetX = GRID_X[col]; this.dieTargetY = GRID_Y[row];
       this.audio.move();
     }
+  }
+
+  _moveGrid(dCol, dRow) {
+    this._moveToGrid(
+      Math.max(0, Math.min(2, this.dieGridCol + dCol)),
+      Math.max(0, Math.min(2, this.dieGridRow + dRow))
+    );
   }
 
   _onMouseDown(e) {
@@ -488,30 +507,33 @@ class DiceDash {
 
   _onTouchStart(e) {
     e.preventDefault();
-    if (this.state!=='playing') return;
-    const t=e.touches[0];
-    this.touch={startX:t.clientX, startY:t.clientY, startTime:Date.now(), active:true, isDrag:false};
+    if (this.state !== 'playing') return;
+    const t = e.touches[0];
+    this.touchState = { x: t.clientX, y: t.clientY };
   }
   _onTouchMove(e) {
-    e.preventDefault();
-    if (!this.touch.active||this.state!=='playing') return;
-    const t=e.touches[0];
-    const elapsed=Date.now()-this.touch.startTime;
-    const dx=Math.abs(t.clientX-this.touch.startX), dy=Math.abs(t.clientY-this.touch.startY);
-    if (elapsed>120||dx>25||dy>25) { this.touch.isDrag=true; this._snapToGrid(t.clientX,t.clientY); }
+    e.preventDefault(); // block page scroll
   }
   _onTouchEnd(e) {
-    if (!this.touch.active||this.state!=='playing'){this.touch.active=false;return;}
-    const t=e.changedTouches[0];
-    const dx=t.clientX-this.touch.startX, dy=t.clientY-this.touch.startY;
-    const dt=Date.now()-this.touch.startTime;
-    const dist=Math.hypot(dx,dy);
-    this.touch.active=false;
-    if (dt<220&&dist>28&&!this.touch.isDrag) {
-      Math.abs(dx)>Math.abs(dy)
-        ? (dx>0?this._queueRotation('right'):this._queueRotation('left'))
-        : (dy>0?this._queueRotation('down') :this._queueRotation('up'));
+    if (!this.touchState || this.state !== 'playing') return;
+    const t = e.changedTouches[0];
+    const dx   = t.clientX - this.touchState.x;
+    const dy   = t.clientY - this.touchState.y;
+    const dist = Math.hypot(dx, dy);
+    this.touchState = null;
+
+    if (dist > 38) {
+      // Swipe → rotate
+      Math.abs(dx) > Math.abs(dy)
+        ? (dx > 0 ? this._queueRotation('right') : this._queueRotation('left'))
+        : (dy > 0 ? this._queueRotation('down')  : this._queueRotation('up'));
+    } else if (dist < 22) {
+      // Tap → move to that grid zone
+      const col = t.clientX < window.innerWidth  / 3 ? 0 : t.clientX < 2 * window.innerWidth  / 3 ? 1 : 2;
+      const row = t.clientY < window.innerHeight / 3 ? 2 : t.clientY < 2 * window.innerHeight / 3 ? 1 : 0;
+      this._moveToGrid(col, row);
     }
+    // 22–38 px = ambiguous micro-movement, ignored
   }
 
   _snapToGrid(cx, cy) {
@@ -573,7 +595,7 @@ class DiceDash {
     const label = COLOR_LABELS[fi];
     let hint = `FRONT: <span style="color:${hex};text-shadow:0 0 8px ${hex};font-size:17px">■</span>`+
       ` <span style="color:${hex}">${label}</span>` +
-      `&emsp;<span style="opacity:.45">ARROWS ROTATE &nbsp;|&nbsp; WASD / DRAG MOVE</span>`;
+      `&emsp;<span style="opacity:.45">${'ontouchstart' in window ? 'SWIPE ROTATE · TAP MOVE' : 'ARROWS ROTATE · WASD MOVE'}</span>`;
 
     if (missGate) {
       const wHex   = COLOR_NAMES[missGate.winningColor];
@@ -676,9 +698,6 @@ class DiceDash {
     const fc = new THREE.Color(COLOR_NAMES[this._frontFaceIndex()]);
     this.dieLight.color.lerp(fc, 0.12);
     this.dieLight.intensity = 2.5 + Math.sin(Date.now()*0.004)*0.5;
-
-    // Update die glow sprite color
-    // (sprite texture doesn't update, but light gives the effect)
 
     // Rotation animation
     if (this.isRotating) {
