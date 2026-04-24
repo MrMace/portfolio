@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+  <title>Dice Dash</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: #050510;
+      overflow: hidden;
+      font-family: 'Courier New', monospace;
+      touch-action: none;
+      user-select: none;
+    }
+    #canvas-container {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw; height: 100vh;
+    }
+    canvas { display: block; }
+
+    /* HUD */
+    #hud {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      pointer-events: none;
+      z-index: 10;
+    }
+    #score-display {
+      position: absolute;
+      top: 24px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 52px;
+      font-weight: 900;
+      color: #ffee00;
+      letter-spacing: 6px;
+      text-shadow: 0 0 20px #ffee00, 0 0 50px #ffaa00;
+    }
+    #color-hint {
+      position: absolute;
+      bottom: 40px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 13px;
+      color: rgba(255,255,255,0.4);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    /* Screens */
+    .screen {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      z-index: 20;
+      background: rgba(10,10,15,0.85);
+      backdrop-filter: blur(4px);
+    }
+    .screen.hidden { display: none; }
+
+    .game-title {
+      font-size: 56px;
+      font-weight: 900;
+      letter-spacing: 8px;
+      color: #fff;
+      text-shadow: 0 0 20px #ff0090, 0 0 50px #ff0090, 0 0 100px #aa00ff;
+      margin-bottom: 8px;
+    }
+    .subtitle {
+      font-size: 13px;
+      color: #00ffff;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      text-shadow: 0 0 12px #00ffff;
+      margin-bottom: 48px;
+    }
+
+    .btn {
+      padding: 16px 48px;
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      border: 2px solid;
+      border-radius: 4px;
+      cursor: pointer;
+      background: transparent;
+      transition: all 0.2s;
+      pointer-events: all;
+      margin: 8px;
+    }
+    .btn-primary {
+      color: #ff0090;
+      border-color: #ff0090;
+      box-shadow: 0 0 20px #ff009088, 0 0 40px #ff009044;
+    }
+    .btn-primary:hover, .btn-primary:active {
+      background: rgba(255,0,144,0.15);
+      box-shadow: 0 0 40px #ff0090cc, 0 0 80px #ff009066;
+    }
+    .btn-secondary {
+      color: #00ffff;
+      border-color: #00ffff;
+      box-shadow: 0 0 20px #00ffff66;
+    }
+    .btn-secondary:hover, .btn-secondary:active {
+      background: rgba(0,255,255,0.1);
+      box-shadow: 0 0 40px #00ffffffbb;
+    }
+
+    .how-to {
+      margin-bottom: 36px;
+      text-align: center;
+      color: rgba(255,255,255,0.5);
+      font-size: 13px;
+      line-height: 2;
+      letter-spacing: 1px;
+    }
+    .how-to span { color: rgba(255,255,255,0.9); }
+
+    /* Game Over */
+    #gameover-score {
+      font-size: 80px;
+      font-weight: 900;
+      color: #ffee00;
+      text-shadow: 0 0 30px #ffee00, 0 0 70px #ff0090;
+      margin: 12px 0;
+    }
+    #gameover-best {
+      font-size: 16px;
+      color: rgba(255,255,255,0.4);
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-bottom: 40px;
+    }
+    .gameover-label {
+      font-size: 13px;
+      color: rgba(255,255,255,0.3);
+      letter-spacing: 4px;
+      text-transform: uppercase;
+    }
+
+    /* Die face color indicator */
+    #face-indicator {
+      position: absolute;
+      bottom: 80px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+    .face-dot {
+      width: 18px; height: 18px;
+      border-radius: 3px;
+      border: 2px solid rgba(255,255,255,0.2);
+    }
+    .face-dot.active {
+      border-color: rgba(255,255,255,0.9);
+      box-shadow: 0 0 10px currentColor;
+    }
+  </style>
+</head>
+<body>
+
+<div id="canvas-container"></div>
+
+<div id="hud">
+  <div id="score-display">0</div>
+  <div id="face-indicator"></div>
+  <div id="color-hint">SWIPE TO ROTATE · DRAG TO MOVE</div>
+</div>
+
+<!-- Start Screen -->
+<div id="start-screen" class="screen">
+  <div class="game-title">DICE DASH</div>
+  <div class="subtitle">Match face · Match position</div>
+  <div class="how-to">
+    Each gate is a 3×3 grid of <span>5 colors</span><br>
+    Find 2 matching colors in a row, column, or diagonal<br>
+    <span>Rotate</span> your die face to that color &amp; <span>move</span> to the 3rd square<br>
+    <br>
+    <span style="opacity:.6;font-size:11px">
+      MOBILE: SWIPE = rotate &nbsp;·&nbsp; DRAG = move<br>
+      DESKTOP: ARROWS = rotate &nbsp;·&nbsp; WASD = move
+    </span>
+  </div>
+  <button class="btn btn-primary" id="start-btn">PLAY</button>
+</div>
+
+<!-- Game Over Screen -->
+<div id="gameover-screen" class="screen hidden">
+  <div class="gameover-label">GAME OVER</div>
+  <div id="gameover-score">0</div>
+  <div id="gameover-best">BEST: 0</div>
+  <button class="btn btn-primary" id="retry-btn">RETRY</button>
+  <button class="btn btn-secondary" id="share-btn">SHARE</button>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="game.js"></script>
+</body>
+</html>
