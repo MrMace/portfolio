@@ -478,6 +478,7 @@ class DiceDash {
     this.tzY2 = this._toScreen(GRID_X[1], cy2).y;
 
     // Draw faint guide lines on mobile only
+    const portrait = window.innerWidth < window.innerHeight;
     const svg = document.getElementById('grid-guide');
     if (!svg) return;
     if (!portrait) { svg.innerHTML = ''; return; }
