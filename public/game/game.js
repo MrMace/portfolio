@@ -75,10 +75,15 @@ const LOCAL_FACES = [
 
 // ── Audio ─────────────────────────────────────────────────────────────────────
 class AudioEngine {
-  constructor() { this.ctx = null; }
+  constructor() {
+    this.ctx = null;
+    this._musicActive = false; this._musicMaster = null; this._pulseTimer = null;
+    this.sfxMuted = localStorage.getItem('dd_sfx') === '0';
+  }
   init() { try { this.ctx = new (window.AudioContext||window.webkitAudioContext)(); } catch(e){} }
+
   _play(freq,type,dur,gain=0.25) {
-    if (!this.ctx) return;
+    if (!this.ctx || this.sfxMuted) return;
     const o=this.ctx.createOscillator(), g=this.ctx.createGain();
     o.connect(g); g.connect(this.ctx.destination);
     o.type=type;
@@ -88,6 +93,103 @@ class AudioEngine {
     g.gain.exponentialRampToValueAtTime(0.001, this.ctx.currentTime+dur);
     o.start(); o.stop(this.ctx.currentTime+dur);
   }
+
+  setVolume(v) {
+    this._volume = Math.max(0, Math.min(1, v));
+    if (this._musicMaster) this._musicMaster.gain.value = this._volume;
+    localStorage.setItem('dd_vol', this._volume);
+  }
+
+  startMusic() {
+    if (!this.ctx || this._musicActive) return;
+    this._musicActive = true;
+
+    // Master — use saved volume (default 0.30)
+    const saved = parseFloat(localStorage.getItem('dd_vol'));
+    this._volume = isNaN(saved) ? 0.30 : saved;
+    const master = this.ctx.createGain();
+    master.gain.value = this._volume;
+    master.connect(this.ctx.destination);
+    this._musicMaster = master;
+
+    // Three delay taps = natural room reverb
+    const revBus = this.ctx.createGain();
+    revBus.gain.value = 0.38;
+    revBus.connect(master);
+    const mkTap = (t, fb, wet) => {
+      const d = this.ctx.createDelay(4); d.delayTime.value = t;
+      const f = this.ctx.createGain();   f.gain.value = fb;
+      const w = this.ctx.createGain();   w.gain.value = wet;
+      d.connect(f); f.connect(d); d.connect(w); w.connect(revBus);
+      return d;
+    };
+    this._r1 = mkTap(0.11, 0.52, 0.5);
+    this._r2 = mkTap(0.25, 0.40, 0.3);
+    this._r3 = mkTap(0.47, 0.28, 0.18);
+
+    // C major pentatonic — sounds naturally serene across 3 octaves
+    this._SCALE = [
+      130.8, 146.8, 164.8, 196.0, 220.0,   // octave 3 (warm low)
+      261.6, 293.7, 329.6, 392.0, 440.0,   // octave 4 (mid)
+      523.3, 587.3, 659.3,                  // octave 5 (bright sparkle)
+    ];
+
+    this._scheduleNotes();
+  }
+
+  _playNote(freq, when, vol) {
+    // Soft kalimba/piano: sine + decaying harmonics = natural pluck
+    [[1, 1.0], [2, 0.30], [3, 0.10], [4, 0.03]].forEach(([h, amp]) => {
+      const o = this.ctx.createOscillator();
+      const g = this.ctx.createGain();
+      o.type = 'sine';
+      o.frequency.value = freq * h;
+      const dur = 3.0 / h; // higher harmonics fade faster
+      g.gain.setValueAtTime(0, when);
+      g.gain.linearRampToValueAtTime(amp * vol * 0.20, when + 0.010);
+      g.gain.exponentialRampToValueAtTime(0.0001, when + dur);
+      o.connect(g);
+      g.connect(this._musicMaster);
+      g.connect(this._r1); g.connect(this._r2); g.connect(this._r3);
+      o.start(when);
+      o.stop(when + dur + 0.1);
+    });
+  }
+
+  _scheduleNotes() {
+    if (!this._musicActive) return;
+    const now = this.ctx.currentTime;
+    let t = now + 0.05;
+    const count = 4 + Math.floor(Math.random() * 4);
+
+    for (let i = 0; i < count; i++) {
+      // Weight heavily toward low/mid notes for serenity
+      const r = Math.random();
+      const pool = r < 0.55 ? this._SCALE.slice(0, 5)
+                 : r < 0.88 ? this._SCALE.slice(5, 10)
+                 :             this._SCALE.slice(10);
+      const freq = pool[Math.floor(Math.random() * pool.length)];
+      const vol  = 0.45 + Math.random() * 0.55;
+      this._playNote(freq, t, vol);
+
+      // Occasionally add a soft fifth for warmth
+      if (Math.random() < 0.28) this._playNote(freq * 1.498, t, vol * 0.35);
+
+      t += 1.0 + Math.random() * 3.0; // organic gaps between notes
+    }
+
+    this._pulseTimer = setTimeout(() => this._scheduleNotes(), (t - now - 0.3) * 1000);
+  }
+
+  stopMusic() {
+    this._musicActive = false;
+    clearTimeout(this._pulseTimer);
+    if (this._musicMaster && this.ctx) {
+      this._musicMaster.gain.linearRampToValueAtTime(0, this.ctx.currentTime + 2.5);
+    }
+    setTimeout(() => { this._musicMaster = null; }, 3000);
+  }
+
   rotate() { this._play(500,'square',0.07,0.18); }
   move()   { this._play(280,'sine',0.04,0.12); }
   pass()   { this._play(960,'sine',0.18,0.35); }
@@ -627,6 +729,48 @@ class DiceDash {
     document.getElementById('start-btn').addEventListener('click', ()=>this._startGame());
     document.getElementById('retry-btn').addEventListener('click', ()=>this._startGame());
     document.getElementById('share-btn').addEventListener('click', ()=>this._share());
+
+    // Settings panel
+    const btn     = document.getElementById('settings-btn');
+    const panel   = document.getElementById('settings-panel');
+    const slider  = document.getElementById('music-slider');
+    const volPct  = document.getElementById('vol-pct');
+
+    const savedVol = parseFloat(localStorage.getItem('dd_vol'));
+    const initVol  = isNaN(savedVol) ? 30 : Math.round(savedVol * 100);
+    slider.value   = initVol;
+    volPct.textContent = initVol + '%';
+
+    btn.addEventListener('click', e => {
+      e.stopPropagation();
+      panel.classList.toggle('open');
+    });
+    document.addEventListener('click', () => panel.classList.remove('open'));
+    panel.addEventListener('click', e => e.stopPropagation());
+
+    slider.addEventListener('input', () => {
+      const v = parseInt(slider.value);
+      volPct.textContent = v + '%';
+      this.audio.setVolume(v / 100);
+    });
+
+    // SFX toggle
+    const sfxBtn   = document.getElementById('sfx-toggle');
+    const sfxKnob  = document.getElementById('sfx-knob');
+    const setSfx = (on) => {
+      this.audio.sfxMuted = !on;
+      localStorage.setItem('dd_sfx', on ? '1' : '0');
+      sfxKnob.style.left = on ? '25px' : '3px';
+      sfxBtn.style.background = on ? 'rgba(0,255,255,0.15)' : 'transparent';
+      sfxBtn.style.borderColor = on ? '#00ffff' : 'rgba(255,255,255,0.25)';
+      sfxKnob.style.background = on ? '#00ffff' : 'rgba(255,255,255,0.3)';
+      sfxKnob.style.boxShadow  = on ? '0 0 6px #00ffff' : 'none';
+    };
+    setSfx(!this.audio.sfxMuted); // apply saved state visually
+    sfxBtn.addEventListener('click', e => {
+      e.stopPropagation();
+      setSfx(this.audio.sfxMuted); // toggle
+    });
   }
 
   _startGame() {
@@ -644,6 +788,7 @@ class DiceDash {
     document.getElementById('gameover-screen').classList.add('hidden');
     this._updateHUD();
     this.audio.init();
+    this.audio.startMusic();
     this.clock.start();
   }
 
@@ -661,6 +806,7 @@ class DiceDash {
   }
 
   _gameOver() {
+    this.audio.stopMusic();
     this.state='dead';
     this.deathCount++;
     localStorage.setItem('dd_dc', this.deathCount);
