@@ -611,35 +611,10 @@ class DiceDash {
     e.preventDefault();
     if (this.state !== 'playing') return;
     const t = e.touches[0];
-    this.touchState = {
-      x: t.clientX, y: t.clientY,
-      t: Date.now(), isDrag: false,
-      startCol: this.dieGridCol, startRow: this.dieGridRow,
-    };
+    this.touchState = { x: t.clientX, y: t.clientY, t: Date.now() };
   }
   _onTouchMove(e) {
-    e.preventDefault();
-    if (!this.touchState || this.state !== 'playing') return;
-    const t       = e.touches[0];
-    const dx      = t.clientX - this.touchState.x;
-    const dy      = t.clientY - this.touchState.y;
-    const dist    = Math.hypot(dx, dy);
-    const elapsed = Date.now() - this.touchState.t;
-
-    if (!this.touchState.isDrag && (elapsed > 160 || dist > 32)) {
-      this.touchState.isDrag = true;
-    }
-    if (this.touchState.isDrag) {
-      // Relative drag from finger-start position.
-      // ~28% of the shorter screen dimension = one grid step.
-      // User never needs to reach the edge of the screen.
-      const step   = Math.min(window.innerWidth, window.innerHeight) * 0.28;
-      const colOff = Math.round(dx / step);
-      const rowOff = Math.round(-dy / step); // drag down = lower row index
-      const col    = Math.max(0, Math.min(2, this.touchState.startCol + colOff));
-      const row    = Math.max(0, Math.min(2, this.touchState.startRow + rowOff));
-      this._moveToGrid(col, row);
-    }
+    e.preventDefault(); // block page scroll only
   }
   _onTouchEnd(e) {
     if (!this.touchState || this.state !== 'playing') return;
@@ -647,15 +622,18 @@ class DiceDash {
     const dx      = t.clientX - this.touchState.x;
     const dy      = t.clientY - this.touchState.y;
     const dist    = Math.hypot(dx, dy);
-    const elapsed = Date.now() - this.touchState.t;
-    const wasDrag = this.touchState.isDrag;
     this.touchState = null;
 
-    // Quick flick → rotate
-    if (!wasDrag && dist > 22 && elapsed < 260) {
+    if (dist > 28) {
+      // Swipe → rotate. Direction determined by dominant axis.
       Math.abs(dx) > Math.abs(dy)
         ? (dx > 0 ? this._queueRotation('right') : this._queueRotation('left'))
         : (dy > 0 ? this._queueRotation('down')  : this._queueRotation('up'));
+    } else {
+      // Tap → move to that 3×3 zone instantly.
+      const col = t.clientX < window.innerWidth  / 3 ? 0 : t.clientX < 2 * window.innerWidth  / 3 ? 1 : 2;
+      const row = t.clientY < window.innerHeight / 3 ? 2 : t.clientY < 2 * window.innerHeight / 3 ? 1 : 0;
+      this._moveToGrid(col, row);
     }
   }
 
