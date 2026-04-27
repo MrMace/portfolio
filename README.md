@@ -6,7 +6,6 @@ A personal portfolio and resume site for Matthew Mace, built with Next.js 14, Ty
 
 - **Portfolio site** (`/`) — Animated landing page with sections for About, Experience, Skills, Projects, Education, and Contact
 - **Resume page** (`/resume`) — Clean, print-friendly resume with a PDF download option
-- **Embedded game** — A playable WebGL dice game built in Three.js, linked from the projects section
 
 ## Tech Stack
 
