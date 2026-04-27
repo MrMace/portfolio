@@ -444,12 +444,58 @@ class DiceDash {
 
     this.camera = new THREE.PerspectiveCamera(65, window.innerWidth/window.innerHeight, 0.1, 200);
     this._updateCamera();
+    this._updateTapZones();
 
     window.addEventListener('resize', () => {
       this.renderer.setSize(window.innerWidth, window.innerHeight);
       this._updateCamera();
+      this._updateTapZones();
     });
     this.clock = new THREE.Clock();
+  }
+
+  _toScreen(wx, wy, wz = 0) {
+    const v = new THREE.Vector3(wx, wy, wz);
+    v.project(this.camera);
+    return {
+      x: (v.x * 0.5 + 0.5) * window.innerWidth,
+      y: (1 - (v.y * 0.5 + 0.5)) * window.innerHeight,
+    };
+  }
+
+  _updateTapZones() {
+    const W = window.innerWidth, H = window.innerHeight;
+    // Midpoints between adjacent grid columns/rows
+    const cx1 = (GRID_X[0] + GRID_X[1]) / 2;
+    const cx2 = (GRID_X[1] + GRID_X[2]) / 2;
+    const cy1 = (GRID_Y[0] + GRID_Y[1]) / 2;
+    const cy2 = (GRID_Y[1] + GRID_Y[2]) / 2;
+
+    // Store projected divider screen coords for tap detection
+    this.tzX1 = this._toScreen(cx1, GRID_Y[1]).x;
+    this.tzX2 = this._toScreen(cx2, GRID_Y[1]).x;
+    this.tzY1 = this._toScreen(GRID_X[1], cy1).y; // lower screen Y = higher row
+    this.tzY2 = this._toScreen(GRID_X[1], cy2).y;
+
+    // Draw faint guide lines on mobile only
+    const svg = document.getElementById('grid-guide');
+    if (!svg) return;
+    if (!portrait) { svg.innerHTML = ''; return; }
+    // Extra margin beyond the grid edge
+    const xMin = GRID_X[0] - 0.9, xMax = GRID_X[2] + 0.9;
+    const yMin = GRID_Y[0] - 0.9, yMax = GRID_Y[2] + 0.9;
+
+    const line = (ax, ay, bx, by) => {
+      const a = this._toScreen(ax, ay), b = this._toScreen(bx, by);
+      return `<line x1="${a.x.toFixed(1)}" y1="${a.y.toFixed(1)}" x2="${b.x.toFixed(1)}" y2="${b.y.toFixed(1)}"/>`;
+    };
+
+    svg.innerHTML = `<g stroke="rgba(255,255,255,0.07)" stroke-width="1" stroke-dasharray="6 8">
+      ${line(cx1, yMin, cx1, yMax)}
+      ${line(cx2, yMin, cx2, yMax)}
+      ${line(xMin, cy1, xMax, cy1)}
+      ${line(xMin, cy2, xMax, cy2)}
+    </g>`;
   }
 
   _updateCamera() {
@@ -611,30 +657,29 @@ class DiceDash {
     e.preventDefault();
     if (this.state !== 'playing') return;
     const t = e.touches[0];
-    this.touchState = { x: t.clientX, y: t.clientY, t: Date.now() };
+    this.touchState = { x: t.clientX, y: t.clientY, rotated: false };
+    // Move fires immediately — use projected 3D grid boundaries for tap zones
+    const col = t.clientX < this.tzX1 ? 0 : t.clientX < this.tzX2 ? 1 : 2;
+    const row = t.clientY < this.tzY2 ? 2 : t.clientY < this.tzY1 ? 1 : 0;
+    this._moveToGrid(col, row);
   }
   _onTouchMove(e) {
-    e.preventDefault(); // block page scroll only
-  }
-  _onTouchEnd(e) {
-    if (!this.touchState || this.state !== 'playing') return;
-    const t       = e.changedTouches[0];
-    const dx      = t.clientX - this.touchState.x;
-    const dy      = t.clientY - this.touchState.y;
-    const dist    = Math.hypot(dx, dy);
-    this.touchState = null;
-
+    e.preventDefault();
+    if (!this.touchState || this.state !== 'playing' || this.touchState.rotated) return;
+    const t    = e.touches[0];
+    const dx   = t.clientX - this.touchState.x;
+    const dy   = t.clientY - this.touchState.y;
+    const dist = Math.hypot(dx, dy);
     if (dist > 28) {
-      // Swipe → rotate. Direction determined by dominant axis.
+      // Rotation fires mid-swipe the instant direction is clear — no finger lift needed
+      this.touchState.rotated = true;
       Math.abs(dx) > Math.abs(dy)
         ? (dx > 0 ? this._queueRotation('right') : this._queueRotation('left'))
         : (dy > 0 ? this._queueRotation('down')  : this._queueRotation('up'));
-    } else {
-      // Tap → move to that 3×3 zone instantly.
-      const col = t.clientX < window.innerWidth  / 3 ? 0 : t.clientX < 2 * window.innerWidth  / 3 ? 1 : 2;
-      const row = t.clientY < window.innerHeight / 3 ? 2 : t.clientY < 2 * window.innerHeight / 3 ? 1 : 0;
-      this._moveToGrid(col, row);
     }
+  }
+  _onTouchEnd(e) {
+    this.touchState = null;
   }
 
   _snapToGrid(cx, cy) {
