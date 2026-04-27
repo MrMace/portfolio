@@ -107,7 +107,7 @@ export default function About() {
                 <span style={{ color: "#06b6d4" }}>
                   M.S. in Software Development (4.0 GPA)
                 </span>{" "}
-                and a B.S. in Informatics (3.97, Highest Distinction). I'm now
+                and a B.S. from IUPUI school of informatics and computing (3.97, Highest Distinction). I'm now
                 pursuing a second Master's in Artificial Intelligence — applying
                 data-driven thinking to every system I work on.
               </p>
