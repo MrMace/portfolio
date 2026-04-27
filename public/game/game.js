@@ -19,8 +19,8 @@ const LINES = [
   [0,4,8],[2,4,6],
 ];
 
-const GRID_X = [-1.8, 0, 1.8];
-const GRID_Y = [-1.8, 0, 1.8];
+const GRID_X = [-0.3, 1.5, 3.3]; // shifted right 1.5 units
+const GRID_Y = [0.2, 2.0, 3.8];  // shifted up so gate top (~4.5) grazes tunnel ceiling
 const GATE_SPAWN_Z   = -50;
 const GATE_DESTROY_Z = 3;
 const GATE_PASS_Z    = 1.5;
@@ -338,7 +338,7 @@ class DiceDash {
 
     this.scene = new THREE.Scene();
     this.scene.background = new THREE.Color(0x050510);
-    this.scene.fog = new THREE.FogExp2(0x050510, 0.038);
+    this.scene.fog = new THREE.FogExp2(0x050510, 0.065);
 
     this.camera = new THREE.PerspectiveCamera(65, window.innerWidth/window.innerHeight, 0.1, 200);
     this._updateCamera();
@@ -353,13 +353,13 @@ class DiceDash {
   _updateCamera() {
     const portrait = window.innerWidth < window.innerHeight;
     if (portrait) {
-      this.camera.fov = 72;
-      this.camera.position.set(0, 2.0, 9);
-      this.camera.lookAt(0, -0.2, -6);
+      this.camera.fov = 86;
+      this.camera.position.set(2.0, 2.5, 8);
+      this.camera.lookAt(-0.5, -3.5, -8);
     } else {
-      this.camera.fov = 65;
-      this.camera.position.set(2.8, 3.2, 8);
-      this.camera.lookAt(0, -0.5, -8);
+      this.camera.fov = 68;
+      this.camera.position.set(3.5, 2.8, 8);
+      this.camera.lookAt(0, -3.5, -8);
     }
     this.camera.aspect = window.innerWidth / window.innerHeight;
     this.camera.updateProjectionMatrix();
@@ -417,7 +417,7 @@ class DiceDash {
       emissiveIntensity: 0.4, side: THREE.BackSide,
     });
     const tunnel = new THREE.Mesh(new THREE.BoxGeometry(9,9,80), mat);
-    tunnel.position.set(0,0,-34);
+    tunnel.position.set(0, 0, -34);
     this.scene.add(tunnel);
 
     const lMat = new THREE.LineBasicMaterial({ color: 0x330066, transparent: true, opacity: 0.8 });
@@ -509,31 +509,43 @@ class DiceDash {
     e.preventDefault();
     if (this.state !== 'playing') return;
     const t = e.touches[0];
-    this.touchState = { x: t.clientX, y: t.clientY };
+    this.touchState = { x: t.clientX, y: t.clientY, t: Date.now(), isDrag: false };
   }
   _onTouchMove(e) {
-    e.preventDefault(); // block page scroll
-  }
-  _onTouchEnd(e) {
+    e.preventDefault();
     if (!this.touchState || this.state !== 'playing') return;
-    const t = e.changedTouches[0];
-    const dx   = t.clientX - this.touchState.x;
-    const dy   = t.clientY - this.touchState.y;
-    const dist = Math.hypot(dx, dy);
-    this.touchState = null;
+    const t = e.touches[0];
+    const dx      = t.clientX - this.touchState.x;
+    const dy      = t.clientY - this.touchState.y;
+    const dist    = Math.hypot(dx, dy);
+    const elapsed = Date.now() - this.touchState.t;
 
-    if (dist > 38) {
-      // Swipe → rotate
-      Math.abs(dx) > Math.abs(dy)
-        ? (dx > 0 ? this._queueRotation('right') : this._queueRotation('left'))
-        : (dy > 0 ? this._queueRotation('down')  : this._queueRotation('up'));
-    } else if (dist < 22) {
-      // Tap → move to that grid zone
+    // Slow movement or held finger → drag-to-position mode
+    if (!this.touchState.isDrag && (elapsed > 120 || dist > 18)) {
+      this.touchState.isDrag = true;
+    }
+    if (this.touchState.isDrag) {
       const col = t.clientX < window.innerWidth  / 3 ? 0 : t.clientX < 2 * window.innerWidth  / 3 ? 1 : 2;
       const row = t.clientY < window.innerHeight / 3 ? 2 : t.clientY < 2 * window.innerHeight / 3 ? 1 : 0;
       this._moveToGrid(col, row);
     }
-    // 22–38 px = ambiguous micro-movement, ignored
+  }
+  _onTouchEnd(e) {
+    if (!this.touchState || this.state !== 'playing') return;
+    const t       = e.changedTouches[0];
+    const dx      = t.clientX - this.touchState.x;
+    const dy      = t.clientY - this.touchState.y;
+    const dist    = Math.hypot(dx, dy);
+    const elapsed = Date.now() - this.touchState.t;
+    const wasDrag = this.touchState.isDrag;
+    this.touchState = null;
+
+    // Quick flick (never entered drag mode) → rotate
+    if (!wasDrag && dist > 28 && elapsed < 220) {
+      Math.abs(dx) > Math.abs(dy)
+        ? (dx > 0 ? this._queueRotation('right') : this._queueRotation('left'))
+        : (dy > 0 ? this._queueRotation('down')  : this._queueRotation('up'));
+    }
   }
 
   _snapToGrid(cx, cy) {
@@ -578,8 +590,8 @@ class DiceDash {
     switch(dir) {
       case 'up':    axis=new THREE.Vector3(1,0,0); sign=-1; break; // top swings toward camera
       case 'down':  axis=new THREE.Vector3(1,0,0); sign= 1; break; // bottom swings toward camera
-      case 'right': axis=new THREE.Vector3(0,1,0); sign=-1; break; // right face swings toward camera
-      case 'left':  axis=new THREE.Vector3(0,1,0); sign= 1; break; // left face swings toward camera
+      case 'right': axis=new THREE.Vector3(0,1,0); sign= 1; break; // right face swings toward camera
+      case 'left':  axis=new THREE.Vector3(0,1,0); sign=-1; break; // left face swings toward camera
     }
     const delta = new THREE.Quaternion().setFromAxisAngle(axis, (Math.PI/2)*sign);
     this.rotEnd = delta.clone().multiply(this.rotStart); // world-space: pre-multiply
@@ -595,7 +607,7 @@ class DiceDash {
     const label = COLOR_LABELS[fi];
     let hint = `FRONT: <span style="color:${hex};text-shadow:0 0 8px ${hex};font-size:17px">■</span>`+
       ` <span style="color:${hex}">${label}</span>` +
-      `&emsp;<span style="opacity:.45">${'ontouchstart' in window ? 'SWIPE ROTATE · TAP MOVE' : 'ARROWS ROTATE · WASD MOVE'}</span>`;
+      `&emsp;<span style="opacity:.45">${'ontouchstart' in window ? 'FLICK ROTATE · DRAG MOVE' : 'ARROWS ROTATE · WASD MOVE'}</span>`;
 
     if (missGate) {
       const wHex   = COLOR_NAMES[missGate.winningColor];
@@ -689,9 +701,9 @@ class DiceDash {
       this.gates.push(new Gate(this.scene, this.score));
     }
 
-    // Die movement
-    this.dieMesh.position.x += (this.dieTargetX-this.dieMesh.position.x)*Math.min(1,dt*14);
-    this.dieMesh.position.y += (this.dieTargetY-this.dieMesh.position.y)*Math.min(1,dt*14);
+    // Die movement — higher factor = snappier response to finger
+    this.dieMesh.position.x += (this.dieTargetX-this.dieMesh.position.x)*Math.min(1,dt*18);
+    this.dieMesh.position.y += (this.dieTargetY-this.dieMesh.position.y)*Math.min(1,dt*18);
 
     // Die glow light follows die, color = front face
     this.dieLight.position.copy(this.dieMesh.position);
