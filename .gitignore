@@ -45,3 +45,10 @@ next-env.d.ts
 .idea/
 CLAUDE.md
 AGENTS.md
+
+# unused boilerplate assets
+public/file.svg
+public/globe.svg
+public/next.svg
+public/vercel.svg
+public/window.svg
