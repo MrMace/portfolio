@@ -136,30 +136,6 @@ export default function Resume() {
             />
           </Section>
 
-          {/* Projects */}
-          <Section title="Notable Projects">
-            <div className="space-y-2">
-              <Project
-                title="Simple LIMS"
-                tech="Python · FastAPI · PostgreSQL · React · TypeScript · Docker · scikit-learn"
-                desc="Full-stack Laboratory Information Management System built to pharmaceutical compliance standards. Features 21 CFR Part 11 electronic signatures, immutable audit trail logging, OOS workflow management with manager approval gates, and Z-score anomaly detection. Role-based access across administrator, quality manager, and technician tiers."
-                url="github.com/MrMace/Simple_LIMS"
-              />
-              <Project
-                title="Multiplayer Tetris"
-                tech="JavaScript · WebSockets · Node.js · HTML Canvas"
-                desc="Real-time multiplayer Tetris with synchronized game state over WebSockets."
-                url="github.com/MrMace/Tetris"
-              />
-              <Project
-                title="Python Socket Client/Server"
-                tech="Python · TCP/IP · Networking"
-                desc="Low-level socket programming demonstrating client-server architecture, message routing, and connection handling."
-                url="github.com/MrMace/Development-of-a-Python-Socket-Client-and-Server"
-              />
-            </div>
-          </Section>
-
           {/* Skills */}
           <Section title="Skills">
             <div className="grid grid-cols-2 gap-x-8 gap-y-0.5 text-sm" style={{ color: "#374151" }}>
@@ -261,24 +237,6 @@ function Job({ title, company, period, bullets }: {
           </li>
         ))}
       </ul>
-    </div>
-  );
-}
-
-function Project({ title, tech, desc, url }: {
-  title: string;
-  tech: string;
-  desc: string;
-  url: string;
-}) {
-  return (
-    <div className="text-sm">
-      <div className="flex items-baseline gap-2 flex-wrap">
-        <span className="font-semibold" style={{ color: "#0f172a" }}>{title}</span>
-        <span className="text-xs font-mono" style={{ color: "#6b7280" }}>{url}</span>
-      </div>
-      <p className="text-xs font-mono mb-0.5" style={{ color: "#0891b2" }}>{tech}</p>
-      <p style={{ color: "#374151" }}>{desc}</p>
     </div>
   );
 }
