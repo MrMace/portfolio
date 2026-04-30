@@ -98,9 +98,9 @@ export default function About() {
                 <span style={{ color: "#e2e8f0" }}>data integrity, system reliability, and cross-functional collaboration</span>{" "}
                 — owning complex platform issues as the engineering SME, driving
                 continuous improvement, and partnering across dev, support, and
-                operations. Outside of my day role, I've built a full-stack{" "}
-                <span style={{ color: "#06b6d4" }}>LIMS with 21 CFR Part 11 compliance</span>
-                {" "}— including electronic signatures, immutable audit trails, and OOS workflows.
+                operations. I gravitate toward the hard problems: the ones that
+                require deep system knowledge, clear thinking, and the patience
+                to get it right.
               </p>
               <p>
                 Academically, I hold an{" "}
