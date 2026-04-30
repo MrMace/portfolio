@@ -111,13 +111,47 @@ export default function About() {
                 pursuing a second Master's in Artificial Intelligence — applying
                 data-driven thinking to every system I work on.
               </p>
+              <p>
+                Away from the keyboard I've been a{" "}
+                <span style={{ color: "#e2e8f0" }}>NASM Certified Personal Trainer since 2013</span>,
+                with credentials in physique coaching, MMA conditioning, and Muay Thai kickboxing — and a{" "}
+                <span style={{ color: "#06b6d4" }}>brown belt in 10th Planet Jiu-Jitsu</span>{" "}
+                with competition medals and trophies from grappling tournaments.
+              </p>
             </motion.div>
 
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ delay: 0.4, duration: 0.6 }}
-              className="flex items-center gap-2 mt-8"
+              className="flex flex-wrap gap-2 mt-6"
+            >
+              {[
+                { label: "NASM CPT", color: "#06b6d4" },
+                { label: "Physique & Bodybuilding Coach", color: "#7c3aed" },
+                { label: "MMA Conditioning Specialist", color: "#10b981" },
+                { label: "Muay Thai Coach", color: "#f59e0b" },
+                { label: "10th Planet BJJ Brown Belt", color: "#ef4444" },
+              ].map(({ label, color }) => (
+                <span
+                  key={label}
+                  className="text-xs font-mono px-3 py-1 rounded-full"
+                  style={{
+                    background: `${color}14`,
+                    border: `1px solid ${color}40`,
+                    color,
+                  }}
+                >
+                  {label}
+                </span>
+              ))}
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={inView ? { opacity: 1, y: 0 } : {}}
+              transition={{ delay: 0.5, duration: 0.6 }}
+              className="flex items-center gap-2 mt-4"
               style={{ color: "#475569" }}
             >
               <MapPin size={14} style={{ color: "#06b6d4" }} />
