@@ -8,13 +8,13 @@ const beliefs = [
   {
     icon: BrainCircuit,
     title: "Learning by doing",
-    body: "My company is investing heavily in AI, and I've leaned into that — building fluency in prompt engineering and applied AI workflows through real, hands-on work rather than a classroom.",
+    body: "My company is investing heavily in AI, and I've leaned into that, building fluency in prompt engineering and applied AI workflows through real, hands-on work rather than a classroom.",
     color: "#06b6d4",
   },
   {
     icon: Workflow,
     title: "Applied to real engineering",
-    body: "I work on a platform serving millions of users. That's the lens through which I evaluate AI — not demos, but production implications: reliability, latency, and real user impact.",
+    body: "I work on a platform serving millions of users. That's the lens through which I evaluate AI: not demos, but production implications like reliability, latency, and real user impact.",
     color: "#7c3aed",
   },
   {
@@ -98,8 +98,8 @@ export default function AISection() {
           >
             I'm building AI and prompt engineering skills on the job, working
             full-time as a platform engineer at a company investing heavily in
-            AI. That combination — production systems experience and daily,
-            applied AI practice — is where I'm placing my bet on the future of
+            AI. That combination (production systems experience and daily,
+            applied AI practice) is where I'm placing my bet on the future of
             this industry.
           </p>
         </motion.div>
@@ -224,7 +224,7 @@ export default function AISection() {
             style={{ color: "rgba(148, 163, 184, 0.6)" }}
           >
             "The engineers who understand AI at a technical level won't just
-            use better tools —
+            use better tools;
             <span style={{ color: "#e2e8f0" }}>
               {" "}they'll build things that weren't possible before.
             </span>"

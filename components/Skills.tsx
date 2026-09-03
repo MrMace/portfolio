@@ -151,7 +151,7 @@ export default function Skills() {
           className="text-base mb-14 max-w-xl"
           style={{ color: "#64748b" }}
         >
-          Enterprise platform engineering, data integrity, and quality systems —
+          Enterprise platform engineering, data integrity, and quality systems,
           backed by a Master's degree, 8 years in production, and hands-on
           AI / prompt engineering practice.
         </motion.p>

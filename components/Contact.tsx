@@ -12,7 +12,7 @@ const socialLinks = [
     handle: "@MrMace",
     href: "https://github.com/MrMace",
     color: "#e2e8f0",
-    desc: "36+ repos — projects & experiments",
+    desc: "36+ repos of projects & experiments",
   },
   {
     icon: FaLinkedinIn,
@@ -91,7 +91,7 @@ export default function Contact() {
           style={{ color: "#64748b" }}
         >
           Whether you have a project in mind, a role to fill, or just want to
-          talk AI and engineering — my inbox is always open.
+          talk AI and engineering, my inbox is always open.
         </motion.p>
 
         {/* Social links */}

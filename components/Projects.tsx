@@ -20,7 +20,7 @@ const projects = [
   {
     title: "Multiplayer Tetris",
     description:
-      "Real-time multiplayer Tetris built with WebSockets. Multiple players compete live with synchronized game state — no server lag, no cheating.",
+      "Real-time multiplayer Tetris built with WebSockets. Multiple players compete live with synchronized game state: no server lag, no cheating.",
     tech: ["JavaScript", "WebSockets", "Node.js", "HTML Canvas"],
     github: "https://github.com/MrMace/Tetris",
     icon: Gamepad2,
@@ -31,7 +31,7 @@ const projects = [
   {
     title: "Python Socket Client/Server",
     description:
-      "Low-level socket programming in Python — a client-server architecture demonstrating network communication, message routing, and connection handling.",
+      "Low-level socket programming in Python: a client-server architecture demonstrating network communication, message routing, and connection handling.",
     tech: ["Python", "Sockets", "Networking", "TCP/IP"],
     github: "https://github.com/MrMace/Development-of-a-Python-Socket-Client-and-Server",
     icon: Network,
@@ -42,7 +42,7 @@ const projects = [
   {
     title: "Text Editor",
     description:
-      "Browser-based text editor with persistent localStorage — write your content and it survives browser restarts. Clean, distraction-free interface.",
+      "Browser-based text editor with persistent localStorage: write your content and it survives browser restarts. Clean, distraction-free interface.",
     tech: ["JavaScript", "LocalStorage", "HTML", "CSS"],
     github: "https://github.com/MrMace/textEditor",
     icon: FileText,
@@ -64,7 +64,7 @@ const projects = [
   {
     title: "Python Certificate Auth",
     description:
-      "Certificate-based authentication system implemented in Python — exploring PKI, digital signatures, and secure session management from first principles.",
+      "Certificate-based authentication system implemented in Python, exploring PKI, digital signatures, and secure session management from first principles.",
     tech: ["Python", "Cryptography", "PKI", "Auth"],
     github: "https://github.com/MrMace/Python_Cert_Auth",
     icon: Lock,
@@ -75,7 +75,7 @@ const projects = [
   {
     title: "Shape Painter",
     description:
-      "Python graphics utility for drawing and manipulating geometric shapes programmatically — a clean exploration of computational geometry.",
+      "Python graphics utility for drawing and manipulating geometric shapes programmatically, a clean exploration of computational geometry.",
     tech: ["Python", "Graphics", "Geometry"],
     github: "https://gist.github.com/MrMace",
     icon: PaintBucket,
@@ -239,7 +239,7 @@ export default function Projects() {
           className="text-base mb-12 max-w-xl"
           style={{ color: "#64748b" }}
         >
-          From real-time multiplayer systems to authentication pipelines —
+          From real-time multiplayer systems to authentication pipelines,
           a collection of projects built to understand how things actually work.
         </motion.p>
 

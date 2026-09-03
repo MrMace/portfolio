@@ -1,11 +1,11 @@
-# mattmace.dev — Personal Portfolio
+# mattmace.dev: Personal Portfolio
 
 A personal portfolio and resume site for Matthew Mace, built with Next.js 14, TypeScript, and Tailwind CSS.
 
 ## What's in here
 
-- **Portfolio site** (`/`) — Animated landing page with sections for About, Experience, Skills, Projects, Education, and Contact
-- **Resume page** (`/resume`) — Clean, print-friendly resume with a PDF download option
+- **Portfolio site** (`/`): Animated landing page with sections for About, Experience, Skills, Projects, Education, and Contact
+- **Resume page** (`/resume`): Clean, print-friendly resume with a PDF download option
 
 ## Tech Stack
 

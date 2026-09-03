@@ -6,7 +6,7 @@ import { GraduationCap, Award, BadgeCheck, Star } from "lucide-react";
 
 const degrees = [
   {
-    degree: "Master of Science — Software Development",
+    degree: "Master of Science in Software Development",
     school: "Maryville University of Saint Louis",
     period: "Sep 2018 – May 2020",
     status: "GPA 4.0",
@@ -15,22 +15,22 @@ const degrees = [
     note: "Perfect 4.0 GPA across graduate-level software engineering coursework.",
   },
   {
-    degree: "Bachelor of Science — School of Informatics",
+    degree: "Bachelor of Science, School of Informatics",
     school: "Indiana University–Purdue University Indianapolis (IUPUI)",
     period: "Jan 2015 – May 2018",
     status: "GPA 3.97",
     statusColor: "#7c3aed",
     color: "#10b981",
-    note: "Graduated with Highest Distinction — top 10% of class. Tutoring, Dev Club.",
+    note: "Graduated with Highest Distinction (top 10% of class). Tutoring, Dev Club.",
   },
   {
-    degree: "Associate of Science — Computer Programming",
+    degree: "Associate of Science in Computer Programming",
     school: "Vincennes University",
     period: "2013 – 2015",
     status: "Foundation",
     statusColor: "#f59e0b",
     color: "#f59e0b",
-    note: "The starting point — computer programming fundamentals.",
+    note: "The starting point: computer programming fundamentals.",
   },
 ];
 
@@ -59,7 +59,7 @@ const honors = [
   {
     title: "Highest Distinction",
     org: "IUPUI",
-    desc: "Graduated in top 10% — GPA 3.9–4.0.",
+    desc: "Graduated in top 10% (GPA 3.9–4.0).",
     icon: Star,
     color: "#f59e0b",
   },
@@ -127,7 +127,7 @@ export default function Education() {
           className="text-base mb-14 max-w-xl"
           style={{ color: "#64748b" }}
         >
-          A consistent record of academic excellence — 4.0 at the master's level,
+          A consistent record of academic excellence: 4.0 at the master's level,
           3.97 as an undergrad, plus ongoing applied AI and prompt engineering
           training through my current company.
         </motion.p>

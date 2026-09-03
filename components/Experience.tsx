@@ -12,7 +12,7 @@ const jobs = [
     duration: "8+ yrs",
     color: "#06b6d4",
     bullets: [
-      "Act as Subject Matter Expert (SME) for complex, high-impact platform issues — partnering across development, support, and operations to drive resolution and maintain system integrity.",
+      "Act as Subject Matter Expert (SME) for complex, high-impact platform issues, partnering across development, support, and operations to drive resolution and maintain system integrity.",
       "Maintain and continuously improve enterprise-scale SaaS systems serving millions of users, with emphasis on data integrity, reliability, and performance.",
       "Participate in systematic platform validation, testing, and release procedures to ensure functionality, quality, and consistency prior to deployment.",
       "Develop and maintain internal documentation, training materials, and best practices to standardize workflows and improve team effectiveness.",

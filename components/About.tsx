@@ -8,19 +8,19 @@ const highlights = [
   {
     icon: Layers,
     title: "Enterprise Systems Management",
-    desc: "8+ years owning and improving a complex SaaS platform — configuration, maintenance, validation, and continuous improvement at scale.",
+    desc: "8+ years owning and improving a complex SaaS platform: configuration, maintenance, validation, and continuous improvement at scale.",
     color: "#06b6d4",
   },
   {
     icon: Code2,
     title: "Cross-Functional SME",
-    desc: "Engineering escalation point across dev, support, and operations — driving root cause resolution and process documentation across teams.",
+    desc: "Engineering escalation point across dev, support, and operations, driving root cause resolution and process documentation across teams.",
     color: "#7c3aed",
   },
   {
     icon: Brain,
     title: "Data Integrity & Quality Focus",
-    desc: "Ensuring platform reliability, data accuracy, and system integrity across millions of users — with formal validation and release procedures.",
+    desc: "Ensuring platform reliability, data accuracy, and system integrity across millions of users, with formal validation and release procedures.",
     color: "#10b981",
   },
 ];
@@ -95,8 +95,8 @@ export default function About() {
               </p>
               <p>
                 My work centers on{" "}
-                <span style={{ color: "#e2e8f0" }}>data integrity, system reliability, and cross-functional collaboration</span>{" "}
-                — owning complex platform issues as the engineering SME, driving
+                <span style={{ color: "#e2e8f0" }}>data integrity, system reliability, and cross-functional collaboration</span>,
+                owning complex platform issues as the engineering SME, driving
                 continuous improvement, and partnering across dev, support, and
                 operations. I gravitate toward the hard problems: the ones that
                 require deep system knowledge, clear thinking, and the patience
@@ -112,13 +112,13 @@ export default function About() {
                 <span style={{ color: "#06b6d4" }}>
                   applied AI and prompt engineering
                 </span>{" "}
-                through hands-on work with my current company — applying
+                through hands-on work with my current company, applying
                 data-driven thinking to every system I work on.
               </p>
               <p>
                 Away from the keyboard I've been a{" "}
                 <span style={{ color: "#e2e8f0" }}>NASM Certified Personal Trainer since 2013</span>,
-                with credentials in physique coaching, MMA conditioning, and Muay Thai kickboxing — and a{" "}
+                with credentials in physique coaching, MMA conditioning, and Muay Thai kickboxing, and a{" "}
                 <span style={{ color: "#06b6d4" }}>brown belt in 10th Planet Jiu-Jitsu</span>{" "}
                 with competition medals and trophies from grappling tournaments.
               </p>

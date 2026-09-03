@@ -144,7 +144,7 @@ export default function Resume() {
               <div className="flex items-start justify-between flex-wrap gap-1 mb-1">
                 <span className="font-semibold" style={{ color: "#0f172a" }}>
                   Simple LIMS
-                  <span className="font-normal" style={{ color: "#6b7280" }}> — self-directed, built outside of work</span>
+                  <span className="font-normal" style={{ color: "#6b7280" }}> (self-directed, built outside of work)</span>
                 </span>
                 <a
                   href="https://github.com/MrMace/Simple_LIMS"
