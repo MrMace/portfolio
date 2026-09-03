@@ -41,8 +41,7 @@ const skillCategories = [
 
 const techBadges = [
   "PHP", "JavaScript", "Python", "SQL / MariaDB", "HTML/CSS",
-  "LIMS", "21 CFR Part 11", "Data Integrity", "Audit Trails",
-  "Statistical Analysis", "OOS Workflows", "Data Quality",
+  "Data Integrity", "Audit Trails", "Statistical Analysis", "Data Quality",
   "System Validation", "Root Cause Analysis", "Process Improvement",
   "Docker", "FastAPI", "React / TypeScript",
 ];
@@ -153,8 +152,8 @@ export default function Skills() {
           style={{ color: "#64748b" }}
         >
           Enterprise platform engineering, data integrity, and quality systems —
-          backed by a Master's degree, 8 years in production, a self-built LIMS,
-          and hands-on AI / prompt engineering practice.
+          backed by a Master's degree, 8 years in production, and hands-on
+          AI / prompt engineering practice.
         </motion.p>
 
         {/* Skill bars grid */}

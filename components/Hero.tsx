@@ -152,9 +152,8 @@ export default function Hero() {
           className="text-base sm:text-lg max-w-2xl mb-10 leading-relaxed"
           style={{ color: "rgba(148, 163, 184, 0.75)" }}
         >
-          8 years on a SaaS platform serving millions of users. Builder of a
-          21 CFR Part 11-compliant LIMS. M.S. in Software Development (4.0 GPA),
-          now sharpening
+          8 years on a SaaS platform serving millions of users. M.S. in Software
+          Development (4.0 GPA), now sharpening
           <span style={{ color: "#e2e8f0" }}> AI & prompt engineering</span> skills
           on the job.
         </motion.p>

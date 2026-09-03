@@ -14,12 +14,12 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "Matt Mace — Platform Engineer",
-  description: "CMS Platform Engineer based in Indianapolis with 8+ years on a SaaS platform serving millions of users. Building AI and prompt engineering skills on the job. Builder of a 21 CFR Part 11-compliant LIMS.",
+  description: "CMS Platform Engineer based in Indianapolis with 8+ years on a SaaS platform serving millions of users. Building AI and prompt engineering skills on the job.",
   keywords: ["Matt Mace", "platform engineer", "CMS engineer", "data integrity", "LIMS", "AI", "Indianapolis", "software engineer", "SaaS"],
   metadataBase: new URL("https://mattmace.dev"),
   openGraph: {
     title: "Matt Mace — Platform Engineer",
-    description: "8+ years on a SaaS platform serving millions of users. Building AI and prompt engineering skills on the job. Builder of a 21 CFR Part 11-compliant LIMS.",
+    description: "8+ years on a SaaS platform serving millions of users. Building AI and prompt engineering skills on the job.",
     type: "website",
     url: "https://mattmace.dev",
   },
