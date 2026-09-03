@@ -57,7 +57,7 @@ export default function Resume() {
               Matthew Mace
             </h1>
             <p className="text-base mt-0.5 font-medium" style={{ color: "#0891b2" }}>
-              CMS Platform Engineer · Data Integrity · AI Graduate Student
+              CMS Platform Engineer · Data Integrity · AI & Prompt Engineering
             </p>
             <div className="flex flex-wrap gap-4 mt-2 text-sm" style={{ color: "#475569" }}>
               <span className="flex items-center gap-1">
@@ -84,10 +84,11 @@ export default function Resume() {
             <p className="text-sm leading-relaxed" style={{ color: "#374151" }}>
               CMS Platform Engineer with 8+ years on a large-scale SaaS platform serving millions of users.
               Deep expertise in PHP, JavaScript, HTML/CSS, SQL, and CMS architecture, with a consistent focus on
-              data integrity, system reliability, and platform performance. Serves as the engineering escalation
-              point for complex technical issues across development, support, and operations. M.S. Software Development
-              (4.0 GPA), B.S. Informatics (3.97 GPA, Highest Distinction), and currently pursuing a second M.S. in
-              Artificial Intelligence.
+              data integrity, system validation, and platform reliability. Serves as the engineering escalation
+              point for complex technical issues across development, support, and operations. M.S. Software
+              Development (4.0 GPA), B.S. Informatics (3.97 GPA, Highest Distinction), and actively building
+              applied AI, prompt engineering, and data engineering skills through hands-on work with my current
+              company and independent projects.
             </p>
           </Section>
 
@@ -136,27 +137,52 @@ export default function Resume() {
             />
           </Section>
 
+          {/* Personal Project */}
+          <Section title="Personal Project">
+            <div className="mb-1 text-sm">
+              <div className="flex items-start justify-between flex-wrap gap-1 mb-1">
+                <span className="font-semibold" style={{ color: "#0f172a" }}>
+                  Simple LIMS
+                  <span className="font-normal" style={{ color: "#6b7280" }}> — self-directed, built outside of work</span>
+                </span>
+                <a
+                  href="https://github.com/MrMace/Simple_LIMS"
+                  className="text-xs font-mono"
+                  style={{ color: "#0891b2" }}
+                >
+                  github.com/MrMace/Simple_LIMS
+                </a>
+              </div>
+              <ul className="space-y-0.5">
+                {[
+                  "Built a full-stack Laboratory Information Management System on my own time to learn pharma data-integrity concepts: 21 CFR Part 11 electronic signatures, audit trail logging, and out-of-specification (OOS) workflows with approval gates.",
+                  "Added chain-of-custody tracking and statistical anomaly detection via Z-score analysis.",
+                  "Built with Python, FastAPI, PostgreSQL, React, and TypeScript, with role-based access across administrator, quality manager, and technician tiers.",
+                ].map((b, i) => (
+                  <li key={i} className="flex items-start gap-2 text-sm" style={{ color: "#374151" }}>
+                    <span className="mt-1.5 w-1 h-1 rounded-full flex-shrink-0" style={{ background: "#0891b2" }} />
+                    {b}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </Section>
+
           {/* Skills */}
           <Section title="Skills">
             <div className="grid grid-cols-2 gap-x-8 gap-y-0.5 text-sm" style={{ color: "#374151" }}>
+              <SkillRow label="Quality" value="Data Integrity, System Validation, Testing & Release" />
+              <SkillRow label="AI / Data" value="Prompt Engineering, AI-Augmented Workflows, Statistical Analysis" />
               <SkillRow label="Languages" value="PHP, JavaScript, Python, HTML/CSS, SQL" />
               <SkillRow label="Platform" value="CMS Architecture, SaaS Systems, REST APIs" />
               <SkillRow label="Database" value="MariaDB, MySQL, PostgreSQL" />
-              <SkillRow label="Quality" value="Data Integrity, System Validation, Audit Trails" />
-              <SkillRow label="Compliance" value="21 CFR Part 11, OOS Workflows" />
               <SkillRow label="Tools" value="PhpStorm, Docker, Git, FastAPI, React" />
-              <SkillRow label="AI / Data" value="Prompt Engineering, ML Fundamentals, Statistical Analysis" />
               <SkillRow label="Soft Skills" value="Cross-functional Leadership, Documentation, Root Cause Analysis" />
             </div>
           </Section>
 
           {/* Education */}
           <Section title="Education">
-            <Degree
-              degree="Master of Science in Artificial Intelligence"
-              school="Udacity Institute of AI & Technology"
-              period="Dec 2025 – Dec 2027 (Expected)"
-            />
             <Degree
               degree="Master of Science in Software Development"
               school="Maryville University of Saint Louis"
@@ -181,6 +207,7 @@ export default function Resume() {
             <Section title="Certifications">
               <ul className="text-sm space-y-1" style={{ color: "#374151" }}>
                 <li>AI Essentials, Google <span style={{ color: "#6b7280" }}>(Nov 2025)</span></li>
+                <li>Applied AI & Prompt Engineering, On-the-job <span style={{ color: "#6b7280" }}>(Ongoing)</span></li>
                 <li>CompTIA Project+ <span style={{ color: "#6b7280" }}>(Jan 2017)</span></li>
               </ul>
             </Section>
