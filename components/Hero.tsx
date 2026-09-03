@@ -13,7 +13,7 @@ const NeuralCanvas = dynamic(() => import("./NeuralCanvas"), {
 const ROTATING_PHRASES = [
   "Platform Engineer",
   "Data Integrity Specialist",
-  "AI Graduate Student",
+  "AI & Prompt Engineering",
   "Enterprise Systems SME",
   "Data & Quality Focused",
 ];
@@ -153,8 +153,10 @@ export default function Hero() {
           style={{ color: "rgba(148, 163, 184, 0.75)" }}
         >
           8 years on a SaaS platform serving millions of users. Builder of a
-          21 CFR Part 11-compliant LIMS. Two Master's degrees — the second in
-          <span style={{ color: "#e2e8f0" }}> Artificial Intelligence</span>.
+          21 CFR Part 11-compliant LIMS. M.S. in Software Development (4.0 GPA),
+          now sharpening
+          <span style={{ color: "#e2e8f0" }}> AI & prompt engineering</span> skills
+          on the job.
         </motion.p>
 
         {/* CTAs */}
@@ -219,8 +221,8 @@ export default function Hero() {
         >
           {[
             { value: "8+", label: "Yrs at MyNetWire" },
-            { value: "2×", label: "Master's Degrees" },
             { value: "4.0", label: "Graduate GPA" },
+            { value: "AI", label: "Prompt Engineering" },
           ].map((stat) => (
             <div key={stat.label} className="flex flex-col items-center">
               <span className="text-2xl font-bold gradient-text">

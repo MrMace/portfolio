@@ -33,8 +33,8 @@ const skillCategories = [
       { name: "SQL & Data Analysis", level: 82 },
       { name: "Statistical Analysis", level: 74 },
       { name: "Data-Driven Decision Making", level: 85 },
-      { name: "ML Fundamentals (M.S.)", level: 68 },
-      { name: "AI-Augmented Workflows", level: 78 },
+      { name: "Prompt Engineering", level: 80 },
+      { name: "AI-Augmented Workflows", level: 82 },
     ],
   },
 ];
@@ -153,7 +153,8 @@ export default function Skills() {
           style={{ color: "#64748b" }}
         >
           Enterprise platform engineering, data integrity, and quality systems —
-          backed by two Master's degrees, 8 years in production, and a self-built LIMS.
+          backed by a Master's degree, 8 years in production, a self-built LIMS,
+          and hands-on AI / prompt engineering practice.
         </motion.p>
 
         {/* Skill bars grid */}

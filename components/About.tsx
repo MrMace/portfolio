@@ -107,8 +107,12 @@ export default function About() {
                 <span style={{ color: "#06b6d4" }}>
                   M.S. in Software Development (4.0 GPA)
                 </span>{" "}
-                and a B.S. from IUPUI school of informatics and computing (3.97, Highest Distinction). I'm now
-                pursuing a second Master's in Artificial Intelligence — applying
+                and a B.S. from IUPUI school of informatics and computing (3.97, Highest Distinction).
+                These days I'm building on that foundation with{" "}
+                <span style={{ color: "#06b6d4" }}>
+                  applied AI and prompt engineering
+                </span>{" "}
+                through hands-on work with my current company — applying
                 data-driven thinking to every system I work on.
               </p>
               <p>
@@ -225,8 +229,8 @@ export default function About() {
                 <span style={{ color: "#10b981" }}>"Platform & Systems Engineer"</span>,<br />
                 &nbsp;&nbsp;<span style={{ color: "#06b6d4" }}>"focus"</span>:{" "}
                 <span style={{ color: "#10b981" }}>"Data Integrity"</span>,<br />
-                &nbsp;&nbsp;<span style={{ color: "#06b6d4" }}>"studying"</span>:{" "}
-                <span style={{ color: "#10b981" }}>"M.S. Artificial Intelligence"</span>,<br />
+                &nbsp;&nbsp;<span style={{ color: "#06b6d4" }}>"learning"</span>:{" "}
+                <span style={{ color: "#10b981" }}>"Applied AI & Prompt Engineering"</span>,<br />
                 &nbsp;&nbsp;<span style={{ color: "#06b6d4" }}>"status"</span>:{" "}
                 <span style={{ color: "#10b981" }}>"Open to opportunities"</span><br />
                 {"}"}

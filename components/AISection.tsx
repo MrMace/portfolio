@@ -7,8 +7,8 @@ import { Bot, Sparkles, Cpu, Workflow, BrainCircuit, Rocket } from "lucide-react
 const beliefs = [
   {
     icon: BrainCircuit,
-    title: "Academic foundation",
-    body: "Pursuing a Master's in AI isn't just a credential — it's building the theoretical foundation to actually understand what these models are doing, not just how to prompt them.",
+    title: "Learning by doing",
+    body: "My company is investing heavily in AI, and I've leaned into that — building fluency in prompt engineering and applied AI workflows through real, hands-on work rather than a classroom.",
     color: "#06b6d4",
   },
   {
@@ -20,7 +20,7 @@ const beliefs = [
   {
     icon: Rocket,
     title: "The compounding edge",
-    body: "Combining platform engineering experience with graduate-level AI study creates a rare perspective: someone who can build the system and understand the intelligence layer on top of it.",
+    body: "Combining platform engineering experience with day-to-day AI practice creates a rare perspective: someone who can build the system and put the intelligence layer to work on top of it.",
     color: "#10b981",
   },
 ];
@@ -96,10 +96,11 @@ export default function AISection() {
             className="text-base max-w-2xl leading-relaxed"
             style={{ color: "#64748b" }}
           >
-            I'm pursuing a Master's degree in AI while working full-time as a
-            platform engineer. That combination — production systems experience
-            and graduate-level AI study — is where I'm placing my bet on the
-            future of this industry.
+            I'm building AI and prompt engineering skills on the job, working
+            full-time as a platform engineer at a company investing heavily in
+            AI. That combination — production systems experience and daily,
+            applied AI practice — is where I'm placing my bet on the future of
+            this industry.
           </p>
         </motion.div>
 

@@ -20,7 +20,7 @@ const socialLinks = [
     handle: "macematt",
     href: "https://www.linkedin.com/in/macematt/",
     color: "#06b6d4",
-    desc: "8+ yrs experience · M.S. AI in progress",
+    desc: "8+ yrs experience · AI & prompt engineering",
   },
   {
     icon: FaCodepen,

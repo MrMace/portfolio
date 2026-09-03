@@ -6,15 +6,6 @@ import { GraduationCap, Award, BadgeCheck, Star } from "lucide-react";
 
 const degrees = [
   {
-    degree: "Master of Science — Artificial Intelligence",
-    school: "Udacity Institute of AI & Technology",
-    period: "Dec 2025 – Dec 2027",
-    status: "In Progress",
-    statusColor: "#10b981",
-    color: "#06b6d4",
-    note: "Active graduate study in AI theory, ML, and applied intelligent systems.",
-  },
-  {
     degree: "Master of Science — Software Development",
     school: "Maryville University of Saint Louis",
     period: "Sep 2018 – May 2020",
@@ -49,6 +40,12 @@ const certifications = [
     issuer: "Google",
     issued: "Nov 2025",
     color: "#06b6d4",
+  },
+  {
+    name: "Applied AI & Prompt Engineering",
+    issuer: "On-the-job training",
+    issued: "Ongoing",
+    color: "#10b981",
   },
   {
     name: "CompTIA Project+",
@@ -119,8 +116,8 @@ export default function Education() {
           className="text-4xl sm:text-5xl font-bold mb-4"
           style={{ color: "#e2e8f0" }}
         >
-          Four degrees.{" "}
-          <span className="gradient-text">Two Master's.</span>
+          Three degrees.{" "}
+          <span className="gradient-text">One Master's.</span>
         </motion.h2>
 
         <motion.p
@@ -131,7 +128,8 @@ export default function Education() {
           style={{ color: "#64748b" }}
         >
           A consistent record of academic excellence — 4.0 at the master's level,
-          3.97 as an undergrad, and now a second M.S. in AI underway.
+          3.97 as an undergrad, plus ongoing applied AI and prompt engineering
+          training through my current company.
         </motion.p>
 
         <div className="grid lg:grid-cols-2 gap-6 mb-14">
