@@ -100,6 +100,7 @@ export default function Resume() {
               period="Apr 2018 – Present"
               bullets={[
                 "Act as Subject Matter Expert (SME) for complex, high-impact platform issues, partnering across development, support, and operations to drive resolution and maintain system integrity.",
+                "Integrated the Stripe API and built a full account migration tool to move users from legacy Stripe accounts to Stripe Custom accounts, coordinating directly with the vendor while preserving data integrity throughout the migration.",
                 "Maintain and continuously improve enterprise-scale SaaS systems serving millions of users, with emphasis on data integrity, reliability, and performance.",
                 "Develop and enhance features within a custom CMS, including UI improvements, performance optimizations, and functionality upgrades across thousands of active websites.",
                 "Participate in systematic platform validation, testing, and release procedures to ensure functionality, quality, and consistency prior to deployment.",
@@ -176,7 +177,7 @@ export default function Resume() {
               <SkillRow label="Languages" value="PHP, JavaScript, Python, HTML/CSS, SQL" />
               <SkillRow label="Platform" value="CMS Architecture, SaaS Systems, REST APIs" />
               <SkillRow label="Database" value="MariaDB, MySQL, PostgreSQL" />
-              <SkillRow label="Tools" value="PhpStorm, Docker, Git, FastAPI, React" />
+              <SkillRow label="Tools" value="PhpStorm, Docker, Git, FastAPI, React, Stripe API" />
               <SkillRow label="Soft Skills" value="Cross-functional Leadership, Documentation, Root Cause Analysis" />
             </div>
           </Section>
