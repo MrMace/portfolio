@@ -57,7 +57,7 @@ export default function Resume() {
               Matthew Mace
             </h1>
             <p className="text-base mt-0.5 font-medium" style={{ color: "#0891b2" }}>
-              CMS Platform Engineer · Data Integrity · AI & Prompt Engineering
+              Software Engineer · Full-Stack Web
             </p>
             <div className="flex flex-wrap gap-4 mt-2 text-sm" style={{ color: "#475569" }}>
               <span className="flex items-center gap-1">
@@ -82,13 +82,9 @@ export default function Resume() {
           {/* Summary */}
           <Section title="Summary">
             <p className="text-sm leading-relaxed" style={{ color: "#374151" }}>
-              CMS Platform Engineer with 8+ years on a large-scale SaaS platform serving millions of users.
-              Deep expertise in PHP, JavaScript, HTML/CSS, SQL, and CMS architecture, with a consistent focus on
-              data integrity, system validation, and platform reliability. Serves as the engineering escalation
-              point for complex technical issues across development, support, and operations. M.S. Software
-              Development (4.0 GPA), B.S. Informatics (3.97 GPA, Highest Distinction), and actively building
-              applied AI, prompt engineering, and data engineering skills through hands-on work with my current
-              company and independent projects.
+              Software engineer with 8+ years on a SaaS platform serving millions of users. Full-stack across
+              PHP, JavaScript/TypeScript, Python, and SQL. Early adopter of AI development tools, using Claude Code
+              and Cursor daily to build, debug, and ship faster. M.S. Software Development (4.0 GPA).
             </p>
           </Section>
 
@@ -99,13 +95,12 @@ export default function Resume() {
               company="MyNetWire"
               period="Apr 2018 – Present"
               bullets={[
-                "Act as Subject Matter Expert (SME) for complex, high-impact platform issues, partnering across development, support, and operations to drive resolution and maintain system integrity.",
-                "Integrated the Stripe API and built a full account migration tool to move users from legacy Stripe accounts to Stripe Custom accounts, coordinating directly with the vendor while preserving data integrity throughout the migration.",
-                "Maintain and continuously improve enterprise-scale SaaS systems serving millions of users, with emphasis on data integrity, reliability, and performance.",
-                "Develop and enhance features within a custom CMS, including UI improvements, performance optimizations, and functionality upgrades across thousands of active websites.",
-                "Participate in systematic platform validation, testing, and release procedures to ensure functionality, quality, and consistency prior to deployment.",
-                "Develop and maintain internal documentation, training materials, and best practices to standardize workflows and improve team effectiveness.",
-                "Utilize PHP, JavaScript, HTML, CSS, and PhpStorm to deliver clean, efficient, and maintainable code.",
+                "Escalation point for complex, high-impact platform issues across development, support, and operations.",
+                "Integrated the Stripe API and built a tool to migrate users from legacy Stripe accounts to Stripe Custom accounts, working directly with Stripe.",
+                "Build and improve features in a custom CMS running thousands of active websites for millions of users.",
+                "Early adopter of AI coding tools (Claude Code, Cursor); use them daily for debugging, code review, and documentation.",
+                "Run validation, testing, and release checks before deployment.",
+                "Write internal docs and training materials that standardize team workflows.",
               ]}
             />
             <Job
@@ -113,9 +108,8 @@ export default function Resume() {
               company="Independent"
               period="Jan 2014 – Present"
               bullets={[
-                "Design and develop websites, web applications, and custom CMS solutions for clients.",
-                "Manage full project lifecycle: requirements, scope, timelines, budgets, and delivery.",
-                "Build responsive, maintainable front-end and back-end code; perform testing, debugging, and optimization.",
+                "Design and build websites, web apps, and custom CMS solutions for clients.",
+                "Own the full project lifecycle: requirements, scope, budget, and delivery.",
               ]}
             />
             <Job
@@ -138,47 +132,38 @@ export default function Resume() {
             />
           </Section>
 
-          {/* Personal Project */}
-          <Section title="Personal Project">
-            <div className="mb-1 text-sm">
-              <div className="flex items-start justify-between flex-wrap gap-1 mb-1">
-                <span className="font-semibold" style={{ color: "#0f172a" }}>
-                  Simple LIMS
-                  <span className="font-normal" style={{ color: "#6b7280" }}> (self-directed, built outside of work)</span>
-                </span>
-                <a
-                  href="https://github.com/MrMace/Simple_LIMS"
-                  className="text-xs font-mono"
-                  style={{ color: "#0891b2" }}
-                >
-                  github.com/MrMace/Simple_LIMS
-                </a>
-              </div>
-              <ul className="space-y-0.5">
-                {[
-                  "Built a full-stack Laboratory Information Management System on my own time to learn pharma data-integrity concepts: 21 CFR Part 11 electronic signatures, audit trail logging, and out-of-specification (OOS) workflows with approval gates.",
-                  "Added chain-of-custody tracking and statistical anomaly detection via Z-score analysis.",
-                  "Built with Python, FastAPI, PostgreSQL, React, and TypeScript, with role-based access across administrator, quality manager, and technician tiers.",
-                ].map((b, i) => (
-                  <li key={i} className="flex items-start gap-2 text-sm" style={{ color: "#374151" }}>
-                    <span className="mt-1.5 w-1 h-1 rounded-full flex-shrink-0" style={{ background: "#0891b2" }} />
-                    {b}
-                  </li>
-                ))}
-              </ul>
-            </div>
+          {/* Projects */}
+          <Section title="Projects">
+            <Project
+              name="Circle City Martial Arts & Fitness"
+              href="https://ccmaf-site.vercel.app"
+              link="ccmaf-site.vercel.app"
+              bullets={[
+                "Client site for an Indianapolis gym: Next.js 16, TypeScript, Tailwind, and Supabase on Vercel.",
+                "Admin panel lets the owner edit content and the class schedule and read contact messages, no developer needed.",
+              ]}
+            />
+            <Project
+              name="Simple LIMS"
+              href="https://github.com/MrMace/Simple_LIMS"
+              link="github.com/MrMace/Simple_LIMS"
+              bullets={[
+                "Full-stack lab information system with e-signatures, audit trails, approval workflows, and Z-score anomaly detection.",
+                "Python, FastAPI, PostgreSQL, React, TypeScript, and Docker, with role-based access.",
+              ]}
+            />
           </Section>
 
           {/* Skills */}
           <Section title="Skills">
             <div className="grid grid-cols-2 gap-x-8 gap-y-0.5 text-sm" style={{ color: "#374151" }}>
-              <SkillRow label="Quality" value="Data Integrity, System Validation, Testing & Release" />
-              <SkillRow label="AI / Data" value="Prompt Engineering, AI-Augmented Workflows, Statistical Analysis" />
-              <SkillRow label="Languages" value="PHP, JavaScript, Python, HTML/CSS, SQL" />
-              <SkillRow label="Platform" value="CMS Architecture, SaaS Systems, REST APIs" />
-              <SkillRow label="Database" value="MariaDB, MySQL, PostgreSQL" />
-              <SkillRow label="Tools" value="PhpStorm, Docker, Git, FastAPI, React, Stripe API" />
-              <SkillRow label="Soft Skills" value="Cross-functional Leadership, Documentation, Root Cause Analysis" />
+              <SkillRow label="AI" value="Claude Code, Cursor, Claude API, Prompt Engineering" />
+              <SkillRow label="Languages" value="PHP, JavaScript, TypeScript, Python, SQL, HTML/CSS" />
+              <SkillRow label="Frameworks" value="Next.js, React, FastAPI, Tailwind CSS" />
+              <SkillRow label="Platform" value="CMS Architecture, SaaS, REST APIs, Stripe API" />
+              <SkillRow label="Database" value="MariaDB, MySQL, PostgreSQL, Supabase" />
+              <SkillRow label="Tools" value="Git, Docker, Vercel, PhpStorm" />
+              <SkillRow label="Quality" value="Testing & Release, Data Integrity, Root Cause Analysis" />
             </div>
           </Section>
 
@@ -208,7 +193,6 @@ export default function Resume() {
             <Section title="Certifications">
               <ul className="text-sm space-y-1" style={{ color: "#374151" }}>
                 <li>AI Essentials, Google <span style={{ color: "#6b7280" }}>(Nov 2025)</span></li>
-                <li>Applied AI & Prompt Engineering, On-the-job <span style={{ color: "#6b7280" }}>(Ongoing)</span></li>
                 <li>CompTIA Project+ <span style={{ color: "#6b7280" }}>(Jan 2017)</span></li>
               </ul>
             </Section>
@@ -256,6 +240,30 @@ function Job({ title, company, period, bullets }: {
           <span className="text-sm" style={{ color: "#0891b2" }}> · {company}</span>
         </div>
         <span className="text-xs font-mono" style={{ color: "#6b7280" }}>{period}</span>
+      </div>
+      <ul className="space-y-0.5">
+        {bullets.map((b, i) => (
+          <li key={i} className="flex items-start gap-2 text-sm" style={{ color: "#374151" }}>
+            <span className="mt-1.5 w-1 h-1 rounded-full flex-shrink-0" style={{ background: "#0891b2" }} />
+            {b}
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+
+function Project({ name, href, link, bullets }: {
+  name: string;
+  href: string;
+  link: string;
+  bullets: string[];
+}) {
+  return (
+    <div className="mb-2 text-sm">
+      <div className="flex items-start justify-between flex-wrap gap-1 mb-1">
+        <span className="font-semibold" style={{ color: "#0f172a" }}>{name}</span>
+        <a href={href} className="text-xs font-mono" style={{ color: "#0891b2" }}>{link}</a>
       </div>
       <ul className="space-y-0.5">
         {bullets.map((b, i) => (

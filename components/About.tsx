@@ -7,20 +7,20 @@ import { MapPin, Code2, Brain, Layers } from "lucide-react";
 const highlights = [
   {
     icon: Layers,
-    title: "Enterprise Systems Management",
-    desc: "8+ years owning and improving a complex SaaS platform: configuration, maintenance, validation, and continuous improvement at scale.",
+    title: "Production Engineering",
+    desc: "8+ years building and maintaining a SaaS platform that runs thousands of websites.",
     color: "#06b6d4",
   },
   {
     icon: Code2,
-    title: "Cross-Functional SME",
-    desc: "Engineering escalation point across dev, support, and operations, driving root cause resolution and process documentation across teams.",
+    title: "Go-To Problem Solver",
+    desc: "The escalation point for the hard platform issues across dev, support, and operations.",
     color: "#7c3aed",
   },
   {
     icon: Brain,
-    title: "Data Integrity & Quality Focus",
-    desc: "Ensuring platform reliability, data accuracy, and system integrity across millions of users, with formal validation and release procedures.",
+    title: "AI in the Workflow",
+    desc: "Using AI coding tools daily since they were new. Faster builds, better debugging, cleaner docs.",
     color: "#10b981",
   },
 ];
@@ -88,32 +88,22 @@ export default function About() {
             >
               <p>
                 I'm <span style={{ color: "#e2e8f0" }}>Matt Mace</span>, a
-                platform engineer and enterprise systems specialist based in
-                Indianapolis. For 8+ years I've worked at MyNetWire managing a
-                large-scale SaaS platform that powers thousands of websites for
-                millions of users.
+                software engineer in Indianapolis. For 8+ years I've worked at
+                MyNetWire on a SaaS platform that powers thousands of websites
+                for millions of users.
               </p>
               <p>
-                My work centers on{" "}
-                <span style={{ color: "#e2e8f0" }}>data integrity, system reliability, and cross-functional collaboration</span>,
-                owning complex platform issues as the engineering SME, driving
-                continuous improvement, and partnering across dev, support, and
-                operations. I gravitate toward the hard problems: the ones that
-                require deep system knowledge, clear thinking, and the patience
-                to get it right.
+                I picked up{" "}
+                <span style={{ color: "#e2e8f0" }}>AI development tools</span>{" "}
+                early and they're part of how I work every day, from debugging
+                production issues to shipping client sites.
               </p>
               <p>
-                Academically, I hold an{" "}
+                I hold an{" "}
                 <span style={{ color: "#06b6d4" }}>
                   M.S. in Software Development (4.0 GPA)
                 </span>{" "}
-                and a B.S. from IUPUI school of informatics and computing (3.97, Highest Distinction).
-                These days I'm building on that foundation with{" "}
-                <span style={{ color: "#06b6d4" }}>
-                  applied AI and prompt engineering
-                </span>{" "}
-                through hands-on work with my current company, applying
-                data-driven thinking to every system I work on.
+                and a B.S. from IUPUI's School of Informatics and Computing (3.97, Highest Distinction).
               </p>
               <p>
                 Away from the keyboard I've been a{" "}
@@ -226,11 +216,11 @@ export default function About() {
               <div className="mt-2" style={{ color: "#94a3b8" }}>
                 {"{"}<br />
                 &nbsp;&nbsp;<span style={{ color: "#06b6d4" }}>"role"</span>:{" "}
-                <span style={{ color: "#10b981" }}>"Platform & Systems Engineer"</span>,<br />
-                &nbsp;&nbsp;<span style={{ color: "#06b6d4" }}>"focus"</span>:{" "}
-                <span style={{ color: "#10b981" }}>"Data Integrity"</span>,<br />
-                &nbsp;&nbsp;<span style={{ color: "#06b6d4" }}>"learning"</span>:{" "}
-                <span style={{ color: "#10b981" }}>"Applied AI & Prompt Engineering"</span>,<br />
+                <span style={{ color: "#10b981" }}>"Software Engineer"</span>,<br />
+                &nbsp;&nbsp;<span style={{ color: "#06b6d4" }}>"stack"</span>:{" "}
+                <span style={{ color: "#10b981" }}>"PHP, TypeScript, Python"</span>,<br />
+                &nbsp;&nbsp;<span style={{ color: "#06b6d4" }}>"ai"</span>:{" "}
+                <span style={{ color: "#10b981" }}>"Early adopter"</span>,<br />
                 &nbsp;&nbsp;<span style={{ color: "#06b6d4" }}>"status"</span>:{" "}
                 <span style={{ color: "#10b981" }}>"Open to opportunities"</span><br />
                 {"}"}

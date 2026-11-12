@@ -42,12 +42,6 @@ const certifications = [
     color: "#06b6d4",
   },
   {
-    name: "Applied AI & Prompt Engineering",
-    issuer: "On-the-job training",
-    issued: "Ongoing",
-    color: "#10b981",
-  },
-  {
     name: "CompTIA Project+",
     issuer: "CompTIA",
     issued: "Jan 2017",
@@ -127,9 +121,7 @@ export default function Education() {
           className="text-base mb-14 max-w-xl"
           style={{ color: "#64748b" }}
         >
-          A consistent record of academic excellence: 4.0 at the master's level,
-          3.97 as an undergrad, plus ongoing applied AI and prompt engineering
-          training through my current company.
+          4.0 at the master's level, 3.97 as an undergrad.
         </motion.p>
 
         <div className="grid lg:grid-cols-2 gap-6 mb-14">

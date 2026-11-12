@@ -11,11 +11,9 @@ const NeuralCanvas = dynamic(() => import("./NeuralCanvas"), {
 });
 
 const ROTATING_PHRASES = [
+  "Software Engineer",
+  "Full-Stack Developer",
   "Platform Engineer",
-  "Data Integrity Specialist",
-  "AI & Prompt Engineering",
-  "Enterprise Systems SME",
-  "Data & Quality Focused",
 ];
 
 function TypingText() {
@@ -152,10 +150,9 @@ export default function Hero() {
           className="text-base sm:text-lg max-w-2xl mb-10 leading-relaxed"
           style={{ color: "rgba(148, 163, 184, 0.75)" }}
         >
-          8 years on a SaaS platform serving millions of users. M.S. in Software
-          Development (4.0 GPA), now sharpening
-          <span style={{ color: "#e2e8f0" }}> AI & prompt engineering</span> skills
-          on the job.
+          8+ years building on a SaaS platform serving millions of users. An
+          <span style={{ color: "#e2e8f0" }}> early adopter of AI</span>, using it
+          every day to build and ship faster.
         </motion.p>
 
         {/* CTAs */}
@@ -221,7 +218,7 @@ export default function Hero() {
           {[
             { value: "8+", label: "Yrs at MyNetWire" },
             { value: "4.0", label: "Graduate GPA" },
-            { value: "AI", label: "Prompt Engineering" },
+            { value: "AI", label: "Daily Workflow" },
           ].map((stat) => (
             <div key={stat.label} className="flex flex-col items-center">
               <span className="text-2xl font-bold gradient-text">

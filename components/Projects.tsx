@@ -2,26 +2,39 @@
 
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
-import { ExternalLink, Gamepad2, FileText, Music, Network, Lock, PaintBucket } from "lucide-react";
+import { ExternalLink, Gamepad2, FileText, Music, Network, Lock, Dumbbell, Search, Globe } from "lucide-react";
 import { FaGithub } from "react-icons/fa";
 
-const projects = [
+type Project = {
+  title: string;
+  description: string;
+  tech: string[];
+  github: string;
+  live?: string;
+  icon: typeof Network;
+  color: string;
+  featured: boolean;
+  tag: string;
+};
+
+const projects: Project[] = [
   {
-    title: "Simple LIMS",
+    title: "Circle City Martial Arts & Fitness",
     description:
-      "Full-stack Laboratory Information Management System built to pharmaceutical compliance standards. Features 21 CFR Part 11 electronic signatures, immutable audit trail logging, out-of-specification (OOS) workflow management with manager approval gates, chain-of-custody tracking, and statistical anomaly detection via Z-score analysis. Role-based access across administrator, quality manager, and technician tiers.",
-    tech: ["Python", "FastAPI", "PostgreSQL", "React", "TypeScript", "Docker", "scikit-learn", "JWT", "21 CFR Part 11"],
-    github: "https://github.com/MrMace/Simple_LIMS",
-    icon: Network,
+      "Client site for an Indianapolis gym. The owner edits content, pricing, and the class schedule from a password-protected admin panel, and contact form messages are saved and emailed.",
+    tech: ["Next.js 16", "TypeScript", "Tailwind", "Supabase", "Resend", "Vercel"],
+    github: "https://github.com/MrMace/CCMAF-SITE",
+    live: "https://ccmaf-site.vercel.app",
+    icon: Dumbbell,
     color: "#06b6d4",
     featured: true,
-    tag: "Pharma / LIMS",
+    tag: "Client Work",
   },
   {
     title: "Multiplayer Tetris",
     description:
-      "Real-time multiplayer Tetris built with WebSockets. Multiple players compete live with synchronized game state: no server lag, no cheating.",
-    tech: ["JavaScript", "WebSockets", "Node.js", "HTML Canvas"],
+      "Real-time multiplayer Tetris for up to 4 players with no game server: browsers connect peer-to-peer over WebRTC. Shareable room codes, live opponent boards, and garbage lines sent to rivals when you clear rows. Last player standing wins.",
+    tech: ["JavaScript", "WebRTC", "PeerJS", "HTML Canvas"],
     github: "https://github.com/MrMace/Tetris",
     icon: Gamepad2,
     color: "#7c3aed",
@@ -29,15 +42,26 @@ const projects = [
     tag: "Real-time",
   },
   {
-    title: "Python Socket Client/Server",
+    title: "Simple LIMS",
     description:
-      "Low-level socket programming in Python: a client-server architecture demonstrating network communication, message routing, and connection handling.",
-    tech: ["Python", "Sockets", "Networking", "TCP/IP"],
-    github: "https://github.com/MrMace/Development-of-a-Python-Socket-Client-and-Server",
+      "Full-stack lab information system with electronic signatures, audit trails, out-of-spec approval workflows, chain-of-custody tracking, and Z-score anomaly detection. Role-based access for admins, managers, and technicians.",
+    tech: ["Python", "FastAPI", "PostgreSQL", "React", "TypeScript", "Docker", "scikit-learn"],
+    github: "https://github.com/MrMace/Simple_LIMS",
     icon: Network,
+    color: "#10b981",
+    featured: true,
+    tag: "Full Stack",
+  },
+  {
+    title: "SEO Site Crawler",
+    description:
+      "Python script that pulls page titles, meta descriptions, and H1 to H3 structure for quick SEO audits.",
+    tech: ["Python", "Requests", "BeautifulSoup"],
+    github: "https://github.com/MrMace/Easy_SEO_Site_Crawler_Python",
+    icon: Search,
     color: "#7c3aed",
     featured: false,
-    tag: "Networking",
+    tag: "Tooling",
   },
   {
     title: "Text Editor",
@@ -72,17 +96,6 @@ const projects = [
     featured: false,
     tag: "Security",
   },
-  {
-    title: "Shape Painter",
-    description:
-      "Python graphics utility for drawing and manipulating geometric shapes programmatically, a clean exploration of computational geometry.",
-    tech: ["Python", "Graphics", "Geometry"],
-    github: "https://gist.github.com/MrMace",
-    icon: PaintBucket,
-    color: "#06b6d4",
-    featured: false,
-    tag: "Utility",
-  },
 ];
 
 function ProjectCard({
@@ -90,7 +103,7 @@ function ProjectCard({
   index,
   inView,
 }: {
-  project: (typeof projects)[0];
+  project: Project;
   index: number;
   inView: boolean;
 }) {
@@ -141,8 +154,33 @@ function ProjectCard({
         </div>
 
         <div className="flex gap-2">
+          {project.live && (
+            <a
+              href={project.live}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={`${project.title} live site`}
+              className="w-8 h-8 rounded-lg flex items-center justify-center transition-all duration-200"
+              style={{
+                background: "rgba(255,255,255,0.04)",
+                border: "1px solid rgba(255,255,255,0.06)",
+                color: "#64748b",
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.color = project.color;
+                e.currentTarget.style.borderColor = `${project.color}50`;
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.color = "#64748b";
+                e.currentTarget.style.borderColor = "rgba(255,255,255,0.06)";
+              }}
+            >
+              <Globe size={14} />
+            </a>
+          )}
           <a
             href={project.github}
+            aria-label={`${project.title} on GitHub`}
             target="_blank"
             rel="noopener noreferrer"
             className="w-8 h-8 rounded-lg flex items-center justify-center transition-all duration-200"
@@ -239,8 +277,7 @@ export default function Projects() {
           className="text-base mb-12 max-w-xl"
           style={{ color: "#64748b" }}
         >
-          From real-time multiplayer systems to authentication pipelines,
-          a collection of projects built to understand how things actually work.
+          Client work, full-stack apps, and tools.
         </motion.p>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">

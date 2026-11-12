@@ -7,31 +7,31 @@ import { Bot, Sparkles, Cpu, Workflow, BrainCircuit, Rocket } from "lucide-react
 const beliefs = [
   {
     icon: BrainCircuit,
-    title: "Learning by doing",
-    body: "My company is investing heavily in AI, and I've leaned into that, building fluency in prompt engineering and applied AI workflows through real, hands-on work rather than a classroom.",
+    title: "In early",
+    body: "I started using AI coding tools when they were new and haven't stopped. They're in my daily workflow, not a side experiment.",
     color: "#06b6d4",
   },
   {
     icon: Workflow,
-    title: "Applied to real engineering",
-    body: "I work on a platform serving millions of users. That's the lens through which I evaluate AI: not demos, but production implications like reliability, latency, and real user impact.",
+    title: "Production first",
+    body: "I work on a platform serving millions of users, so I judge AI by what it ships, not by demos.",
     color: "#7c3aed",
   },
   {
     icon: Rocket,
-    title: "The compounding edge",
-    body: "Combining platform engineering experience with day-to-day AI practice creates a rare perspective: someone who can build the system and put the intelligence layer to work on top of it.",
+    title: "Engineer first",
+    body: "AI speeds up the work. The design, judgment, and accountability are still mine.",
     color: "#10b981",
   },
 ];
 
 const tools = [
-  { name: "Claude API", desc: "LLM integration + agentic workflows" },
-  { name: "Cursor / Windsurf", desc: "AI-native code editors" },
-  { name: "Claude Code", desc: "AI pair programming in the terminal" },
-  { name: "Prompt Engineering", desc: "Crafting high-signal instructions" },
-  { name: "RAG Pipelines", desc: "Grounding LLMs in real data" },
-  { name: "Vector Stores", desc: "Semantic search & memory" },
+  { name: "Claude Code", desc: "Daily driver for building and shipping" },
+  { name: "Cursor", desc: "AI-native code editor" },
+  { name: "Claude API", desc: "LLM features and agent workflows" },
+  { name: "MCP", desc: "Connecting AI to real tools" },
+  { name: "Prompt Engineering", desc: "Clear, testable instructions" },
+  { name: "AI Code Review", desc: "A second set of eyes on every change" },
 ];
 
 export default function AISection() {
@@ -73,7 +73,7 @@ export default function AISection() {
             className="text-xs font-mono tracking-widest uppercase"
             style={{ color: "#06b6d4" }}
           >
-            07 / AI Vision
+            07 / AI
           </span>
         </motion.div>
 
@@ -88,19 +88,16 @@ export default function AISection() {
             className="text-4xl sm:text-5xl md:text-6xl font-bold mb-6"
             style={{ color: "#e2e8f0", lineHeight: 1.1 }}
           >
-            Studying AI.{" "}
+            Early adopter.{" "}
             <br />
-            <span className="gradient-text">Building with it.</span>
+            <span className="gradient-text">Daily builder.</span>
           </h2>
           <p
             className="text-base max-w-2xl leading-relaxed"
             style={{ color: "#64748b" }}
           >
-            I'm building AI and prompt engineering skills on the job, working
-            full-time as a platform engineer at a company investing heavily in
-            AI. That combination (production systems experience and daily,
-            applied AI practice) is where I'm placing my bet on the future of
-            this industry.
+            Production engineering experience plus AI in the daily workflow.
+            That's how I build now.
           </p>
         </motion.div>
 

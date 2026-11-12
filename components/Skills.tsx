@@ -9,10 +9,10 @@ const skillCategories = [
     color: "#06b6d4",
     skills: [
       { name: "PHP", level: 88 },
-      { name: "JavaScript", level: 85 },
+      { name: "JavaScript / TypeScript", level: 85 },
       { name: "HTML / CSS", level: 90 },
       { name: "SQL / MariaDB", level: 78 },
-      { name: "Enterprise Systems Config", level: 84 },
+      { name: "Next.js / React", level: 78 },
     ],
   },
   {
@@ -27,23 +27,22 @@ const skillCategories = [
     ],
   },
   {
-    label: "Data & AI",
+    label: "AI & Data",
     color: "#10b981",
     skills: [
-      { name: "SQL & Data Analysis", level: 82 },
-      { name: "Statistical Analysis", level: 74 },
-      { name: "Data-Driven Decision Making", level: 85 },
-      { name: "Prompt Engineering", level: 80 },
-      { name: "AI-Augmented Workflows", level: 82 },
+      { name: "Claude Code / Cursor", level: 88 },
+      { name: "AI-Assisted Development", level: 88 },
+      { name: "Prompt Engineering", level: 84 },
+      { name: "Claude API", level: 74 },
+      { name: "SQL & Data Analysis", level: 80 },
     ],
   },
 ];
 
 const techBadges = [
-  "PHP", "JavaScript", "Python", "SQL / MariaDB", "HTML/CSS",
-  "Data Integrity", "Audit Trails", "Statistical Analysis", "Data Quality",
-  "System Validation", "Root Cause Analysis", "Process Improvement",
-  "Docker", "FastAPI", "React / TypeScript",
+  "PHP", "JavaScript", "TypeScript", "Python", "SQL / MariaDB", "HTML/CSS",
+  "Next.js", "React", "Tailwind CSS", "Supabase", "PostgreSQL", "FastAPI",
+  "Docker", "Vercel", "Stripe API", "Claude Code", "Cursor", "Git",
 ];
 
 function SkillBar({
@@ -151,9 +150,7 @@ export default function Skills() {
           className="text-base mb-14 max-w-xl"
           style={{ color: "#64748b" }}
         >
-          Enterprise platform engineering, data integrity, and quality systems,
-          backed by a Master's degree, 8 years in production, and hands-on
-          AI / prompt engineering practice.
+          8 years in production, full-stack web, and AI in the daily workflow.
         </motion.p>
 
         {/* Skill bars grid */}
