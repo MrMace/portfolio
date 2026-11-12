@@ -151,8 +151,9 @@ export default function Hero() {
           style={{ color: "rgba(148, 163, 184, 0.75)" }}
         >
           8+ years building on a SaaS platform serving millions of users. An
-          <span style={{ color: "#e2e8f0" }}> early adopter of AI</span>, using it
-          every day to build and ship faster.
+          early adopter of AI, sharpening my
+          <span style={{ color: "#e2e8f0" }}> AI & prompt engineering</span> skills
+          every day.
         </motion.p>
 
         {/* CTAs */}

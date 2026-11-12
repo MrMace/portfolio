@@ -83,8 +83,8 @@ export default function Resume() {
           <Section title="Summary">
             <p className="text-sm leading-relaxed" style={{ color: "#374151" }}>
               Software engineer with 8+ years on a SaaS platform serving millions of users. Full-stack across
-              PHP, JavaScript/TypeScript, Python, and SQL. Early adopter of AI development tools, using Claude Code
-              and Cursor daily to build, debug, and ship faster. M.S. Software Development (4.0 GPA).
+              PHP, JavaScript/TypeScript, Python, and SQL. Early adopter of AI, sharpening AI and prompt engineering
+              skills daily with Claude Code and Cursor. M.S. Software Development (4.0 GPA).
             </p>
           </Section>
 
